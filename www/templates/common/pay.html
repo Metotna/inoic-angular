@@ -1,0 +1,16 @@
+<div class="Paytype">
+    <div class="WalletPay">
+        <label class="itemz">
+            <input type="radio" name="group" ng-model="data.ptype" value="WX" ng-change="pay()">
+            <div class="payput"><i class="paywx"></i><span class="tit">微信</span></div>
+            <i class="radio" ng-class="{true: 'radioxz',fasle: 'radioxz'}[data.ptype=='WX']"><i class="dian"></i></i>
+        </label>
+    </div>
+    <div class="WalletPay" ng-if="!is_weixn">
+        <label class="itemz">
+            <input type="radio" name="group" ng-model="data.ptype" value="ALI" ng-change="pay()">
+            <div class="payput"><i class="payzfb"></i><span class="tit">支付宝</span></div>
+            <i class="radio" ng-class="{true: 'radioxz',fasle: 'radioxz'}[data.ptype=='ALI']"><i class="dian"></i></i>
+        </label>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGopay()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">充值结果</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG">
+        <div class="auto-img paysuccessOK" ng-if="successimg">
+            <img src="img/ok.png">
+            <span>付款成功</span>
+        </div>
+        <div class="auto-img paysuccessOK" ng-if="!successimg">
+            <img src="img/ok.png">
+            <span>查询中...</span>
+        </div>
+        <div class="detaillist-foot-butt anniu" style="margin:1.86rem auto 0" ng-click="backGopay()">
+            完成
+        </div>
+    </ion-content>
+</ion-view>

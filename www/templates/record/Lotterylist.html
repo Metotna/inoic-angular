@@ -1,0 +1,201 @@
+<ion-view view-title="开奖信息" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">开奖信息</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content has-bouncing="false">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="refreshAry()"></ion-refresher>
+        <div class="tab-hall list-item list-lot" ng-click="goLotteryzq(1)">
+            <div class="tab-hall-iconleft">
+                <dvi class="tab-hall-icona"><img src="img/1.png"></dvi>
+                <div class="tab-hall-tit">
+                    <span class="tt">竞彩足球</span>
+                    <span class="dd ">
+                        <div class="d-svg-bgc list-zq-c"><img src="img/zhuqiu.svg">
+                        </div>
+                        <div class="d-text list-zq-c">点击查看最近比赛结果</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="goLotteryzq(2)">
+            <div class="tab-hall-iconleft">
+                <dvi class="tab-hall-icona"><img src="img/2.png"></dvi>
+                <div class="tab-hall-tit">
+                    <span class="tt">竞彩篮球</span>
+                    <span class="dd ">
+                        <div class="d-svg-bgc list-lq-c"><img src="img/zhuqiu.svg">
+                        </div>
+                        <div class="d-text list-lq-c">点击查看最近比赛结果</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(3) ">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/3.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">七星彩
+                    <i> 第{{ary[3].pid}}期 {{ary[3].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb ">
+                        <div ng-repeat="qxc in ary[3].acode track by $index">{{qxc}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(4) ">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/4.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">排列三<i> 第{{ary[4].pid}}期 {{ary[4].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb ">
+                        <div ng-repeat="pls in ary[4].acode track by $index">{{pls}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+<!--        <div class="tab-hall list-item list-lot" ng-click="godetails(13) ">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/4.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">福彩3D<i> 第{{ary[13].pid}}期 {{ary[13].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb ">
+                        <div ng-repeat="pls in ary[13].acode track by $index">{{pls}}</div> 
+                        <i class="fcd-sjh">试机号:<i ng-repeat="ss in ary[13].sjh track by $index">{{ss}}</i></i>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>-->
+        <div class="tab-hall list-item list-lot" ng-click="godetails(5) ">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/5.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">排列五<i> 第{{ary[5].pid}}期 {{ary[5].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb ">
+                        <div ng-repeat="plw in ary[5].acode track by $index">{{plw}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(6)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/6.png"></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">大乐透
+                    <i> 第{{ary[6].pid}}期 {{ary[6].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb lotterylistdlt">
+                       <div ng-repeat="dlt in ary[6].acode track by $index">{{dlt}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+<!--        <div class="tab-hall list-item list-lot" ng-click="godetails(11)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/11.png"></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">双色球
+                    <i> 第{{ary[11].pid}}期 {{ary[11].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb lotterylistssq">
+                       <div ng-repeat="dlt in ary[11].acode track by $index">{{dlt}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(12)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/12.png"></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">七乐彩
+                    <i> 第{{ary[12].pid}}期 {{ary[12].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb lotterylistssq">
+                       <div ng-repeat="dlt in ary[12].acode track by $index">{{dlt}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>-->
+        <div class="tab-hall list-item list-lot" ng-click="godetails(10)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/10.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">浙江11选5 <i>第{{ary[10].pid}}期 {{ary[10].atime|limitTo : 10}}</i>
+                    </span>
+                    <span class="bb ">
+                        <div ng-repeat="ssxw in ary[10].acode track by $index">{{ssxw}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(9)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/9.png"></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">上海11选5 <i> 第{{ary[9].pid}}期 {{ary[9].atime|limitTo : 10}}</i>
+                        </span>
+                    <span class="bb ">
+                        <div ng-repeat="ssxw in ary[9].acode track by $index">{{ssxw}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(7)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/7.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">江西11选5 <i> 第{{ary[7].pid}}期 {{ary[7].atime|limitTo : 10}}</i>
+                        </span>
+                    <span class="bb ">
+                        <div ng-repeat="ssxw in ary[7].acode track by $index">{{ssxw}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <div class="tab-hall list-item list-lot" ng-click="godetails(8)">
+            <div class="tab-hall-iconleft ">
+                <dvi class="tab-hall-icona "><img src="img/8.png "></dvi>
+                <div class="tab-hall-tit ">
+                    <span class="tt ">山东11选5 
+                         <i> 第{{ary[8].pid}}期 {{ary[8].atime|limitTo : 10}}</i>
+                        </span>
+                    <span class="bb ">
+                        <div ng-repeat="ssxw in ary[8].acode track by $index">{{ssxw}}</div>
+                    </span>
+                </div>
+            </div>
+            <span><i class="icon iconfont icon-jiantou "></i></span>
+        </div>
+        <!--<div class="slide ">
+            <div class="slide-box ">
+                <div class="sMain "><ion-scroll direction="y " scrollbar-y="false " overflow-scroll="true " style="overflow: hidden "><img src="http://www.gxspp.com/images/banner1.png " alt=" "/></ion-scroll></div>
+                <div class="sMain "><ion-scroll direction="y " scrollbar-y="false " overflow-scroll="true " style="overflow: hidden "><img src="http://www.gxspp.com/images/banner1.png " alt=" "/></ion-scroll></div>
+            </div>
+            <ul class="slide-item ">
+                <li class="cur "></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>-->
+    </ion-content>
+</ion-view>

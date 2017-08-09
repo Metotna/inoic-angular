@@ -1,0 +1,25 @@
+<ion-view view-title="帮助中心" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">帮助中心</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content has-bouncing="false" class="helpcot">
+        <div class="helplist" ng-repeat="x in obj">
+            <div class="helplist-h" ng-click="closelist(x.nums)">
+                <span>{{x.title}}</span>
+                <i class="icon iconfont icon-jiantou helpjt" ng-class="{true:'helpjt-e',false:'helpjt-s'}[tempfalg==x.nums]" ></i>
+            </div>
+            <div class="Diaphragm-line"></div>
+            <ul ng-if="tempfalg==x.nums">
+            	<div ng-repeat="y in x.cot" ng-click="goconcrete($parent.$index,$index)">
+            		<li>{{y.question}}</li>
+               		<div class="Diaphragm-line"></div>
+            	</div>
+            </ul>
+        </div>
+
+    </ion-content>
+</ion-view>

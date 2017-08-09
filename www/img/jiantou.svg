@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="18px" viewBox="0 0 22 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>jiantou</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="竞彩足球" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="七星彩-展开" transform="translate(-366.000000, -519.000000)">
+            <path d="M750,509 L0,509 L0,524 L325,524 L325,526 C325,534.836556 332.163444,542 341,542 L409,542 C417.836556,542 425,534.836556 425,526 L425,524 L750,524 L750,509 Z" id="Rectangle-12" fill="#FFFFFF"></path>
+            <path d="M325.5,524.5 L325.5,526 C325.5,534.560414 332.439586,541.5 341,541.5 L409,541.5 C417.560414,541.5 424.5,534.560414 424.5,526 L424.5,524.5 L325.5,524.5 Z" id="Rectangle-12" stroke="#DDDDDD"></path>
+            <g id="drop-2-copy" transform="translate(366.000000, 519.000000)" fill-rule="nonzero" fill="#CCCCCC">
+                <g id="Group-2">
+                    <polygon id="Page-1" transform="translate(10.725768, 12.777794) rotate(90.000000) translate(-10.725768, -12.777794) " points="6.44254394 20.0538158 7.55745606 21.0572953 15.0090218 12.7782605 7.55748515 4.49829261 6.44251485 5.50170739 12.9909782 12.778202"></polygon>
+                    <polygon id="Page-1" transform="translate(10.725768, 6.000016) rotate(90.000000) translate(-10.725768, -6.000016) " points="13.9909782 6.00055378 5.44254394 15.4982603 6.55745606 16.5017397 16.0090218 6.00061228 6.55748515 -4.50170739 5.44251485 -3.49829261"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

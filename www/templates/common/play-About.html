@@ -1,0 +1,51 @@
+<ion-view view-title="玩法介绍" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">玩法介绍</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content has-bouncing="false">
+        <div class="play-pro" ng-if="type=='1'">
+            <h5>《竞彩足球玩法介绍》</h5>
+            <div ng-include="'templates/common/zqabout.html'"></div>
+        </div>
+        <div class="play-pro" ng-if="type=='2'">
+            <h5>《竞彩篮球玩法介绍》</h5>
+            <div ng-include="'templates/common/lqabout.html'"></div>
+        </div>
+        <div class="play-pro" ng-if="type=='4'">
+            <h5>《排列三玩法介绍》</h5>
+            <div ng-include="'templates/common/plsabout.html'" class="pls"></div>
+        </div>
+        <div class="play-pro" ng-if="type=='5'">
+            <h5>《排列五玩法介绍》</h5>
+            <div ng-include="'templates/common/plwabout.html'" class="plw"></div>
+        </div>
+        <div class="play-pro" ng-if="type=='3'">
+            <h5>《七星彩玩法介绍》</h5>
+            <div ng-include="'templates/common/qxcabout.html'" class="qxc"></div>
+        </div>
+        <div class="play-pro" ng-if="type=='6'">
+            <h5>《大乐透玩法介绍》</h5>
+            <div ng-include="'templates/common/dltabout.html'" class="dlt"></div>
+        </div>
+        <div class="play-pro syxwabout" ng-if="type=='10'|| type=='7' || type=='8' || type=='9'">
+            <h5>《十一选五玩法介绍》</h5>
+            <div ng-include="'templates/common/syxwabout.html'" class="s1xw"></div>
+        </div>
+        <div class="play-pro syxwabout" ng-if="type=='11'">
+            <h5>《双色球玩法介绍》</h5>
+            <div ng-include="'templates/common/ssqabout.html'" class="ssq"></div>
+        </div>
+        <div class="play-pro syxwabout" ng-if="type=='12'">
+            <h5>《七乐彩玩法介绍》</h5>
+            <div ng-include="'templates/common/qlcabout.html'" id="qlc"></div>
+        </div>
+        <div class="play-pro syxwabout" ng-if="type=='13'">
+            <h5>《福彩3D玩法介绍》</h5>
+            <div ng-include="'templates/common/fc3dabout.html'" class="fc3d"></div>
+        </div>
+    </ion-content>
+</ion-view>

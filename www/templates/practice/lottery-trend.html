@@ -1,0 +1,189 @@
+<ion-view view-title="走势图" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har seven-h">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">{{titlehtml}}走势图</span>
+        <a class="icon iconfont icon-chilun  zst-a" ng-click="choosebox()"></a>
+<!--         <div class=" sve-h" ng-click="Gohome()">
+            <a class="icon iconfont icon-shouyeshouye  zst-home"></a>
+        </div> -->
+        <!--<a class="icon iconfont icon-chilun  " ></a>-->
+    </ion-header-bar>
+    <div class="zst-head" ng-if="falg">
+        <div ng-click="pagechange(0)" ng-class="{0:'zst-h-a'}[afalg]">近期开奖</div>
+        <div ng-click="pagechange(1)" ng-class="{1:'zst-h-a'}[afalg]">走势图</div>
+    </div>
+    <div class="zst-head-s" ng-if="!falg">
+        <div ng-click="pagechange(0)" ng-class="{0:'zst-h-a'}[afalg]">近期开奖</div>
+        <div ng-click="pagechange(1)" ng-class="{1:'zst-h-a'}[afalg]" class="zst-s-zx">{{Elevenflag==true?'走势图':'组选走势'}}</div>
+        <div ng-click="pagechange(2)" ng-class="{2:'zst-h-a'}[afalg]">{{Elevenflag==true?'前三走势':'直选走势'}}</div>
+    </div>
+    <ion-content overflow-scroll="true" class="zst"  delegate-handle="orderlist">
+        <ion-slide-box active-slide="PageSlide" class="zst-isb" on-slide-changed="slidechange($index)">
+            <ion-slide delegate-handle="pagea">
+                <div class="zia-head">
+                    <div style="width:17.3%;" ng-class="{true:'ele-temp'}[Elevenflag]">期次</div>
+                    <div style="width:48%;" ng-class="{true:'ele-temps'}[Elevenflag]">开奖号码</div>
+                    <div style="width:17.3%;" class="zia-h-c">{{threeflag==true?'组合形式':'大小比'}}</div>
+                    <div style="width:17.3%;">{{threeflag==true?(type==13?'试机号':'和值'):'奇偶比'}}</div>
+                </div>
+                <ion-content overflow-scroll="true" class="zst-is-a ">
+                    <li class="zst-o-list" ng-repeat="x in allscp " ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-s'">
+                        <span style="width:17.3%;" ng-class="{true:'ele-temp'}[Elevenflag]">{{x.pid.slice(2)}}期</span>
+                        <span style="width:48%;" class="zst-o-l-n" ng-class="{true:'ele-temps'}[Elevenflag]">
+                        <div class="zst-oln"><div ng-repeat="y in x.acode.split(',') track by $index">{{y}}</div> </div>
+                        </span>
+                        <span style="width:17.3%;" class="zol-c">{{threeflag==false?x.dx:x.zhxt;}}</span>
+                        <span style="width:17.3%;"> <i ng-if="type!=13">{{threeflag==false?x.qo:(type==13?x.sjh:x.hz);}}</i>
+                                <i ng-repeat="xx in x.sjh.split(',')  track by $index" ng-if="type==13" style="margin:0 .075rem">{{xx}}</i>
+                        </span>
+                    </li>
+                </ion-content>
+            </ion-slide>
+            <ion-slide delegate-handle="pagec" ng-if="!falg">
+                <div ng-show="pagecfalg" ng-if="tempfalg">
+                    <div class="zib-head">
+                        <div class="zibh-b">
+                            <div style="width:15%">期数</div>
+                            <li ng-repeat="x in aryb" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</li>
+                        </div>
+                    </div>
+                    <ion-content overflow-scroll="true" class="zst-is-a ">
+                        <li class="zst-b-list" ng-repeat="x in allscp" ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-s'">
+                            <div style="width:15%;">{{x.pid.slice(2)}}期</div>
+                            <div ng-repeat="y in ylcp[$index].str track by $index" ng-class="Elevenflag==true?'eleven-tot':''" r-F>
+                                <span ng-class="checkst(a[$parent.$index],$index)==true?'zibh-b-span Corners':''">{{y}}
+                                <i ng-if="addCorner(a[$parent.$index],$index)==2 && threeflag" >2</i></span>
+                                <!--<span ng-class="checkst(x,y)==true?'zibh-b-span Corners':''">{{y}}</span>-->
+                            </div>
+                        </li>
+                        <li class="zst-b-list" style="color: #F05244" ng-if="countflag">
+                            <div style="width:15%;">出现次数</div>
+                            <div ng-repeat="x in cxs.str track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                        <li class="zst-b-list" style="color: #FF7D26;" ng-if="countflag">
+                            <div style="width:15%;">平均遗漏</div>
+                            <div ng-repeat="x in jyl.str track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                        <li class="zst-b-list" style="color: #367F69;" ng-if="countflag">
+                            <div style="width:15%;">最大遗漏</div>
+                            <div ng-repeat="x in zyl.str track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                        <li class="zst-b-list" style="color: #247DC4;" ng-if="countflag">
+                            <div style="width:15%;">最大连出</div>
+                            <div ng-repeat="x in zlc.str track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                    </ion-content>
+                </div>
+            </ion-slide>
+            <ion-slide delegate-handle="pageb">
+                <div ng-show="pagebfalg">
+                    <div class="zib-head">
+                        <div class="zibh-a zia-seven" ng-if="type==3">
+                            <div style="width:15%">位数</div>
+                            <li ng-click="zstx(0)" ng-class="{0:'zibh-a-l'}[zsfalg]">第一位</li>
+                            <li ng-click="zstx(1)" ng-class="{1:'zibh-a-l'}[zsfalg]">第二位</li>
+                            <li ng-click="zstx(2)" ng-class="{2:'zibh-a-l'}[zsfalg]">第三位</li>
+                            <li ng-click="zstx(3)" ng-class="{3:'zibh-a-l'}[zsfalg]">第四位</li>
+                            <li ng-click="zstx(4)" ng-class="{4:'zibh-a-l'}[zsfalg]">第五位</li>
+                            <li ng-click="zstx(5)" ng-class="{5:'zibh-a-l'}[zsfalg]">第六位</li>
+                            <li ng-click="zstx(6)" ng-class="{6:'zibh-a-l'}[zsfalg]">第七位</li>
+                        </div>
+                        <div class="zibh-a zia-five" ng-if="type==5">
+                            <div style="width:15%">位数</div>
+                            <li ng-click="zstx(0)" ng-class="{0:'zibh-a-l'}[zsfalg]">万位</li>
+                            <li ng-click="zstx(1)" ng-class="{1:'zibh-a-l'}[zsfalg]">千位</li>
+                            <li ng-click="zstx(2)" ng-class="{2:'zibh-a-l'}[zsfalg]">百位</li>
+                            <li ng-click="zstx(3)" ng-class="{3:'zibh-a-l'}[zsfalg]">十位</li>
+                            <li ng-click="zstx(4)" ng-class="{4:'zibh-a-l'}[zsfalg]">个位</li>
+                        </div>
+                        <div class="zibh-a zia-three" ng-if="type==4|| type==13 ">
+                            <div style="width:15%">位数</div>
+                            <li ng-click="zstx(0)" ng-class="{0:'zibh-a-l'}[zsfalg]">百位（第一位）</li>
+                            <li ng-click="zstx(1)" ng-class="{1:'zibh-a-l'}[zsfalg]">十位（第二位）</li>
+                            <li ng-click="zstx(2)" ng-class="{2:'zibh-a-l'}[zsfalg]">个位（第三位）</li>
+                        </div>
+                        <div class="zibh-a zia-three" ng-if="Elevenflag">
+                            <div style="width:15%">位数</div>
+                            <li ng-click="zstx(0)" ng-class="{0:'zibh-a-l'}[zsfalg]">万位（第一位）</li>
+                            <li ng-click="zstx(1)" ng-class="{1:'zibh-a-l'}[zsfalg]">千位（第二位）</li>
+                            <li ng-click="zstx(2)" ng-class="{2:'zibh-a-l'}[zsfalg]">百位（第三位）</li>
+                        </div>
+                        <div class="zibh-b">
+                            <div style="width:15%">期号</div>
+                            <li ng-repeat="x in aryb" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</li>
+                        </div>
+                    </div>
+                    <ion-content overflow-scroll="true" class="zst-is-b st-is-cs">
+                        <li class="zst-b-list" ng-repeat="x in allscp  " ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-s'">
+                            <div class="st-l-w">{{x.pid.slice(2)}}</div>
+                            <div ng-repeat="y in ylcp[$index][aryindex] track by $index" ng-class="Elevenflag==true?'eleven-tot':''">
+                                <span ng-class="listcheck(acp[$parent.$index][aryindex],$index)==true?'zibh-b-span':''">{{y}}</span></div>
+                        </li>
+                        <li class="zst-b-list st-list" ng-if="countflag">
+                            <div class="st-l-w">出现次数</div>
+                            <div ng-repeat="x in cxs[aryindex] track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                        <li class="zst-b-list st-list" ng-if="countflag">
+                            <div class="st-l-w">平均遗漏</div>
+                            <div ng-repeat="x in jyl[aryindex] track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                        <li class="zst-b-list st-list" ng-if="countflag">
+                            <div class="st-l-w">最大遗漏</div>
+                            <div ng-repeat="x in zyl[aryindex] track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                        <li class="zst-b-list st-list" ng-if="countflag">
+                            <div class="st-l-w">最大连出</div>
+                            <div ng-repeat="x in zlc[aryindex] track by $index" ng-class="Elevenflag==true?'eleven-tot':''">{{x}}</div>
+                        </li>
+                    </ion-content>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+    <ion-footer-bar class="bar-assertive zst-foot">
+        <div ng-click="backGo()">继续投注{{titlehtml}}</div>
+    </ion-footer-bar>
+    <div class="zst-zsc" ng-if="assistantShow">
+        <ul>
+            <li class="zst-z-a">设置
+                <a href="" class="icon iconfont icon-tianjia" ng-click="chooseevent(3,false)"></a>
+            </li>
+            <li class="zst-z-b">
+                <span ng-click="chooseevent(0,30)" ng-class="{30:'zst-zba'}[flagsa]">近30期</span>
+                <span ng-click="chooseevent(0,50)" ng-class="{50:'zst-zba'}[flagsa]">近50期</span>
+                <span ng-click="chooseevent(0,100)" ng-class="{100:'zst-zba'}[flagsa]">近100期</span>
+            </li>
+            <li class="zst-z-c">
+                <div class="zst-radios" ng-click="chooseevent(1,true)">
+                    <div class="zst-radio">
+                        <div class="zst-radio-a zst-radio-aa">
+                            <div ng-class="{true:'zst-check'}[flagsb]"></div>
+                        </div>正序排列</div>
+                </div>
+                <div class="zst-radios" ng-click="chooseevent(1,false)">
+                    <div class="zst-radio">
+                        <div class="zst-radio-a zst-radio-aa">
+                            <div ng-class="{false:'zst-check'}[flagsb]"></div>
+                        </div>逆序排列</div>
+                </div>
+                <div class="zst-radios" ng-click="chooseevent(2,true)">
+                    <div class="zst-radio">
+                        <div class="zst-radio-a zst-radio-bb">
+                            <div ng-class="{true:'zst-check'}[flagsc]"></div>
+                        </div>统计显示</div>
+                </div>
+                <div class="zst-radios" ng-click="chooseevent(2,false)">
+                    <div class="zst-radio">
+                        <div class="zst-radio-a zst-radio-bb">
+                            <div ng-class="{false:'zst-check'}[flagsc]"></div>
+                        </div>统计隐藏</div>
+                </div>
+            </li>
+            <li class="zst-z-d">
+                <div ng-click="chooseevent(3,false)">取消</div>
+                <div ng-click="chooseevent(3,true)">确定</div>
+                <i></i>
+            </li>
+        </ul>
+    </div>
+</ion-view>

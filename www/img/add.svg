@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="32px" viewBox="0 0 30 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" rx="10"></rect>
+    </defs>
+    <g id="付款成功" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="付款成功-h5ios" transform="translate(-377.000000, -921.000000)">
+            <g id="Group" transform="translate(303.500000, 897.585938)">
+                <g id="Rectangle-13">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#F05244" stroke-width="1" x="0.5" y="0.5" width="339" height="77" rx="10"></rect>
+                </g>
+                <g id="Group-2" transform="translate(72.500000, 18.000000)" fill="#F05244">
+                    <g id="Group-5" transform="translate(0.351007, 6.000000)">
+                        <path d="M17.0126291,13.6363636 L17.0126291,1.36363636 C17.0126291,0.610520796 16.4021084,0 15.6489928,0 C14.8958772,0 14.2853564,0.610520796 14.2853564,1.36363636 L14.2853564,13.6363636 L2.01262915,13.6363636 C1.25951358,13.6363636 0.648992783,14.2468844 0.648992783,15 C0.648992783,15.7531156 1.25951358,16.3636364 2.01262915,16.3636364 L14.2853564,16.3636364 L14.2853564,28.6363636 C14.2853564,29.3894792 14.8958772,30 15.6489928,30 C16.4021084,30 17.0126291,29.3894792 17.0126291,28.6363636 L17.0126291,16.3636364 L29.2853564,16.3636364 C30.038472,16.3636364 30.6489928,15.7531156 30.6489928,15 C30.6489928,14.2468844 30.038472,13.6363636 29.2853564,13.6363636 L17.0126291,13.6363636 Z" id="Combined-Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,30 @@
+<ion-view view-title="忘记密码" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">忘记密码</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG">
+        <div class="login-tab-con register-top">
+            <form name="userLogin" ng-submit="doRegister()" novalidate="novalidate">
+                <p>
+                    <input name="account" type="tel" ng-model="register.phone" ng-focus="cellPhoneErrorOff()" ng-blur="cellPhone()" placeholder="请输入手机号码" />
+                    <span class="error" ng-show="cellPhoneError">{{cellPhoneErrorMsg}}</span>
+                </p>
+                <div class="register-pwd-SMS">
+                    <p class="login-tab-pwd">
+                        <input name="SmsCode" type="tel"  ng-model="register.vcode" ng-focus="passWordErrorOff()" ng-blur="SmsCode()" placeholder="请输入验证码" />
+                        <i class="iconfont icon-cha register-phone-icon font-YZM" ng-click="SmsCodeclean()"></i>
+                    </p>
+                    <div class="login-tab-SMS"><div class="SMS-btn" ng-style="removeEvents" ng-click="sendCountDown()">{{codeTxt}}</div></div>
+                </div>
+                <p>
+                    <button ng-if="isAgree_val" class="submit-btn" type="submit">下一步</button>
+                    <span ng-if="!isAgree_val" class="submit-btn" style="opacity: 0.6">下一步</span>
+                </p>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

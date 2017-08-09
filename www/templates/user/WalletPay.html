@@ -1,0 +1,63 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">充值</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG">
+        <div class="tabsqb1" >
+            <div class="qbczk" style="height: .94rem;line-height: .94rem;"><span class="left col20-right" ></span><input type="number" style="width:94%;height: .94rem;" placeholder="请输入充值金额" ng-model="search.money" ng-change="checkmPhone()"></div>
+            <div class="wallpaynum">
+                <div class ="col-30 mpbill" ng-class="{n: '',10: 'mophone'}[processType]" data-active="10" ng-click="billcz($event)">
+                    <div><p class="reg">10元</p></div>
+                </div>
+                <div class ="col-30 mpbill" ng-class="{n: '',20: 'mophone'}[processType]" data-active="20" ng-click="billcz($event)">
+                    <div><p class="reg">20元</p></div>
+                </div>
+                <div class ="col-30 mpbill" ng-class="{n: '',30: 'mophone'}[processType]" data-active="30" ng-click="billcz($event)">
+                    <div><p class="reg">30元</p></div>
+                </div>
+            </div>
+            <div class="wallpaynum">
+                <div class ="col-30 mpbill" ng-class="{n: '',40: 'mophone'}[processType]" data-active="40" ng-click="billcz($event)">
+                    <div><p class="reg">40元</p></div>
+                </div>
+                <div class ="col-30 mpbill" ng-class="{n: '',50: 'mophone'}[processType]" data-active="50" ng-click="billcz($event)">
+                    <div><p class="reg">50元</p></div>
+                </div>
+                <div class ="col-30 mpbill" ng-class="{n: '',100: 'mophone'}[processType]" data-active="100" ng-click="billcz($event)">
+                    <div><p class="reg">100元</p></div>
+                </div>
+            </div>
+            <div class="wallpaynum">
+                <div class ="col-30 mpbill" ng-class="{n: '',200: 'mophone'}[processType]" data-active="200" ng-click="billcz($event)">
+                    <div><p class="reg">200元</p></div>
+                </div>
+            </div>
+            <pay-Type ptype="search.ptype"></pay-Type>
+            <!--<div class="Paytype">
+               <div class="WalletPay">
+                   <label class="itemz">
+                       <input type="radio" name="group" ng-model="search.ptype" value="WX">
+                       <div class="payput"><i class="paywx"></i><span class="tit">微信</span></div>
+                       <i class="radio" ng-class="{true: 'radioxz',fasle: 'radioxz'}[search.ptype=='WX']"><i class="dian"></i></i>
+                   </label>
+               </div>
+                <div class="WalletPay">
+                    <label class="itemz">
+                        <input type="radio" name="group" ng-model="search.ptype" value="ALI">
+                        <div class="payput"><i class="payzfb"></i><span class="tit">支付宝</span></div>
+                        <i class="radio" ng-class="{true: 'radioxz',fasle: 'radioxz'}[search.ptype=='ALI']"><i class="dian"></i></i>
+                    </label>
+                </div>
+            </div>-->
+            <div  style="padding: 0;width: 92%;margin: 1.7rem auto .2rem;">
+                <div class="walletpaycon" ng-click="doPost()">确认充值</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+

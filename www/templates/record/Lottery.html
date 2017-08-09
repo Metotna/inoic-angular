@@ -1,0 +1,124 @@
+<ion-view view-title="{{playlisttext}}" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">{{playlisttext}}</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-rili funnel" ng-click="Shlist()"></a>
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="list_open contentBG">
+        <div class="list-time" ng-class="{true: 'colse', false: ''}[showtoggle]" ng-click="toggle()">
+            <span class="lts-left">{{TDDate}} {{list[0].cid|limitTo : 2}}  共{{list.length?list.length:0}}场</span>
+            <i class="arrow-ico trans-tf"></i>
+        </div>
+        <div class="list-bgc" ng-class="{true: 'list-bgcheight', false: ''}[showtoggle]">
+            <div class="lottery-s" ng-repeat="z in list" ng-if="ball=='1'">
+                <div class="ls-name">
+                    <div>
+                        <span class="lsn-list-h">{{z.mname}}</span>
+                        <span class="lsn-list-nu">{{z.cid}}</span>
+                    </div>
+                    <div>
+                        <span class="lsn-list-na">{{z.hn}}</span>
+                        <span class="lsn-list-sc">{{z.ms}}:{{z.ss}}</span>
+                        <span class="lsn-list-nb">{{z.gn}}</span>
+                    </div>
+                </div>
+                <table>
+                    <tr class="lsn-title">
+                        <td>胜平负</td>
+                        <td>让球（{{z.lose?z.lose:0}}）</td>
+                        <td>比分</td>
+                        <td>总进球</td>
+                        <td>半全场</td>
+                    </tr>
+                    <tr class="lsn-cot">
+                        <td><span>{{z|lottery:1}}</span></td>
+                        <td><span>{{z|lottery:2}}</span></td>
+                        <td><span>{{z.ms}}:{{z.ss}}</span></td>
+                        <td><span>{{z|lottery:3}}</span></td>
+                        <td><span>{{z|lottery:4}}</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="lottery-s" ng-repeat="z in list" ng-if="ball=='2'">
+                <div class="ls-name">
+                    <div>
+                        <span class="lsn-list-h">{{z.mname}}</span>
+                        <span class="lsn-list-nu">001</span>
+                    </div>
+                    <div>
+                        <span class="lsn-list-na">{{z.hn}}</span>
+                        <span class="lsn-list-sc">{{z.ms}}:{{z.ss}}</span>
+                        <span class="lsn-list-nb">{{z.gn}}</span>
+                    </div>
+
+                </div>
+                <table>
+                    <tr class="lsn-title">
+                        <td>胜负</td>
+                        <td>让分胜负</td>
+                        <td>胜分差</td>
+                        <td>大小分</td>
+
+                    </tr>
+                    <tr class="lsn-cot">
+                        <td><span>主胜</span> 76:96</td>
+                        <td><span>让分主胜</span> -1.5</td>
+                        <td><span>主胜16～20分</span></td>
+                        <td><span>大</span> 159.5</td>
+
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+
+    </ion-content>
+
+    <!--<div class="personal-pro">-->
+    	<!--<li class="pp-img">-->
+    		<!--<span class='pp-left'>头像</span>-->
+    	<!--</li>-->
+    	<!--<li class="pp-phone">-->
+    		<!--<span class='pp-left'>手机号</span><span class='pp-span'>151****6666</span>-->
+    	<!--</li>-->
+    	<!--<li class="pp-name">-->
+    		<!--<span class='pp-left'>昵称</span><span class='pp-span'>3333</span>-->
+    		<!--<div class="pp-s"></div>-->
+    	<!--</li>-->
+ <!---->
+    <!--</div>-->
+            <!-- 提现内容 -->
+    <!--    <div class="card-cash">
+
+		<div class="cc-name">
+		<img src="../www/img/bank@2x.png" class='ccn-img'>
+			<span class="ccn-name">工商银行 储蓄卡</span>
+			<span class="ccn-num">尾号 <tt>111</tt></span>
+			<div class="ccn-d"></div>
+		</div>
+		<div class="cc-amount">
+			<div class="cca-amount">
+				<span class="ccaa-s">提现金额</span>
+				<div> <span>¥</span> <input type="text" value="100.00"></div>
+				<img src='../www/img/delete.png'>
+			</div>
+			<div class="cca-remark">
+				<span class="ccar-l">可提现余额<span> 0.00</span>元</span>
+				<span class="ccar-r">全部提现</span>
+			</div>
+		</div>
+		<div class="cc-remarks">2小时内到账</div>
+		<div class="cc-btn"><div>确定提取</div></div>
+	</div> -->
+    <!-- 时间选择 -->
+      <div class="open-time" ng-class="{true: 'height100', false: ''}[ShlistHeght]">
+   			<div class="ot-t">
+                <li ng-class="{true: 'ott-img', false: ''}[t == TDDate]" ng-repeat="t in timearry1">{{t}}</li>
+   			</div>
+   		</div>
+</ion-view>

@@ -1,0 +1,78 @@
+<ion-view  hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har seven-h">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">{{titlehtml}}</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-jiagezoushi funnel zst-ico" ng-click="zstopen()"></a>
+            <a class="funnel dian" ng-click="assistant()"></a>
+        </div> 
+    </ion-header-bar>
+    <div class="sc-heada" ng-click="cotchange()">{{nOrder.pid}}期，{{ntime[0]}}<i> {{ntime[1]}} </i>截止</div>
+    <div class="sch-f-a" ng-click="cotchange()">
+        <div><img src='img/jiantou.svg' class="sch-f-j"> </div>
+        
+    </div>
+    <div class="sch-cot" ng-click="zstopen()">
+        <div class="scha-h schc-list-bgc ">
+            <span class="schc-a">期次</span><span class="schc-b">开奖号码</span>
+        </div>
+        <li class='schc-list' ng-repeat="x in rAry" ng-class-even="'schc-list-bgc'" ng-class="$index == 0 ? 'schc-list-c':'';">
+            <div>{{x.pid}}期<i></i></div>
+            <div class="schc-list-w "><span ng-repeat="y in x.acode.split(',') track by $index">{{y}}</span> </div>
+        </li>
+    </div>
+    <ion-content class="seven-cot" has-bouncing="false" on-drag-up="scrollup()"  on-drag-down="scrolldown()">
+        <div class="s-cot-head">
+        </div>
+        <div class="sc-headb">
+            <span>每位至少选1个号</span>
+            <span ng-if="type == 3">定位中全部7码，最高获奖<i>500万</i></span>
+            <span ng-if="type == 5">猜中开奖且一一对应，即奖<i>100000元</i></span>
+            <div ng-click="shake()"><img src="img/yaoyiyao.svg">机选一注</div>
+        </div>
+        <div class="sc-cot">
+            <div class="scc-li" ng-repeat="x in ary track by $index" ng-init="temp=$index">
+                <div class="sccl-l">
+                    <span ng-if="typeflag">第{{$index+1}}位</span>
+                    <span ng-if="!typeflag">{{nameary[$index]}}位</span><i></i>
+                    <span >遗漏</span><i></i>
+                </div>
+                <div class="sccl-r">
+                    <li style="color:#000;" ng-repeat="m in aryb">
+                        <div class="b_class temp_li" on-touch="numclick($parent.$index,m)" on-release="fangdahidea($parent.$index,m)" on-drag="fangdahideb($parent.$index,m)">{{m}}
+                            <div class="scclr-big">
+                                <span>{{m}}</span>
+                            </div>
+                        </div>
+                        <span ng-if="missflag" ng-bind-html="omit[temp][m]" ></span>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+        <ion-footer-bar class="soccerhall-foots">
+        <div class="sf-l-t"  ng-show="choosenums">
+            <div ng-click="rdnums(1)">1注</div>
+            <div ng-click="rdnums(5)">5注</div>
+            <div ng-click="rdnums(10)" class="sf-l-ta">10注</div>
+            <span></span>
+        </div>
+        <div class="sf-left" ng-click="deleteary()"   ng-if="flag">清除</div>
+        <div class="sf-left" ng-click="randomss()" ng-if="!flag">机选</div>
+        <div class="sf-cot">
+              <span ng-if="flag"> {{ending||''}} 注 共 {{ending*2||""}} 元</span>
+            <span ng-if="!flag">每个位置至少选择1个号码</span>
+        </div>
+        <div class="sf-right" ng-click="postget()">确定</div>
+    </ion-footer-bar>
+
+
+    <div class="assistant" ng-show="assistantShow">
+        <ul>
+            <li ng-click="assistants(1)">购奖记录</li>
+            <li ng-click="assistants(2)">玩法介绍</li>
+            <li ng-click="assistants(3)">开奖信息</li>
+        </ul>
+    </div>
+</ion-view>

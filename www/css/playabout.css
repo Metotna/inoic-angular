@@ -1,0 +1,467 @@
+.tabMould{
+    width: 100%;
+    height: auto;
+    margin-bottom: .4rem;
+    padding: 0 .24rem;
+    text-align: justify;
+}
+.tabMouldHead{
+    width: 100%;
+    height: 0.32rem;
+    position: relative;
+    margin-bottom: .3rem;
+}
+.zuqiu{
+    background: url(../img/1.png) no-repeat left;
+    background-size: .1rem .32rem;
+}
+.syxwabout .tabMouldHead{
+    background: url(../img/szgpc.png) no-repeat left;
+    background-size: .1rem .32rem;
+}
+.syxwabout .tabMouldHead h2{
+    color: #f2314b;
+}
+.lanqiu{
+    background: url(../img/lanqiu1.png) no-repeat left;
+    background-size: .1rem .32rem;
+}
+.tabMouldHead h2{
+    width: 100%;
+    height: 0.32rem;
+    font-size: .3rem;
+    font-weight: normal;
+    text-align: left;
+    line-height: 0.34rem;
+    margin-left: .16rem;
+}
+.zuqiu h2{
+    color: #12ae5b;
+}
+.lanqiu h2{
+    color: #258cdb;
+}
+.tabMouldBody{
+    width: 100%;
+    height: auto;
+}
+.tabMouldBody p.title{
+    width: 100%;
+    height: auto;
+    font-size: .32rem;
+    line-height: .44rem;
+    text-align: justify;
+    color: #333333;
+}
+.tabMouldBody p.title span:nth-child(1){
+    width: 2rem;
+    height: 100%;
+    display: inline-block;
+    text-align: justify;
+    letter-spacing: .06rem;
+}
+.tabMouldBody p.title #noSpace{
+    letter-spacing: 0;
+}
+.tabMouldBody p.Title{
+    width: 100%;
+    height: auto;
+    font-size: .30rem;
+    line-height: .44rem;
+    color: #666666;
+    margin-bottom: .1rem;
+}
+.tabMouldBody p.note{
+    width: 100%;
+    height: .3rem;
+    font-size: .3rem;
+    line-height: .3rem;
+    color: #999999;
+}
+.tabMouldBody p.pTitle{
+    width: 100%;
+    height: auto;
+    font-size: .30rem;
+    line-height: .48rem;
+    color: #666666;
+    margin-bottom: 0.05rem;
+}
+.tabMouldBody ul.introduce{
+    width: 100%;
+    height: auto;
+    margin-top: .3rem;
+}
+.tabMouldBody ul.introduce li{
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: .1rem;
+}
+.tabMouldBody ul.introduce li .introduce{
+    width: 28%;
+    height: .4rem;
+    text-align: right;
+    font-size: .3rem;
+    line-height: .48rem;
+    color: #333333;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.tabMouldBody ul.introduce li .content{
+    width: 68%;
+    height: auto;
+    text-align: justify;
+    font-size: .30rem;
+    line-height: .48rem;
+    color: #666666;
+    margin-left: 31%;
+}
+.tabMouldBody ul.jczq li .content{
+    width: 100%;
+    height: auto;
+    text-align: justify;
+    font-size: .30rem;
+    line-height: .48rem;
+    color: #666666;
+    margin-left: 0%;
+}
+.tabMouldBody ul.bjdc li .introduce{
+    width: 25%;
+}
+.tabMouldBody ul.bjdc li .content{
+    width: 75%;
+    margin-left: 27%;
+}
+.tabMouldBody table.introduce{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ebe8e2;
+    font-size: .28rem;
+    color: #7e6b5a;
+    text-align: center;
+}
+.tabMouldBody table.introduce tr{
+    width: 100%;
+}
+.tabMouldBody table.introduce tr td{
+    height: 100%;
+}
+.tabMouldBody table.introduce tr:nth-child(1){
+    color: #9c8b7c;
+}
+.tabMouldBody table.introduce tr:nth-child(odd),
+.tabMouldBody table.introduce tr:nth-child(odd) td{
+    background: #f3f2ee;
+    width: 100%;
+}
+.tabMouldBody table.introduce tr td{
+    min-height: .6rem;
+    padding: .1rem;
+    vertical-align: middle;
+}
+.tabMouldBody table.introduce tr td:nth-child(1){
+    width: 25%;
+    height: auto;
+}
+.tabMouldBody table.introduce tr td:nth-child(1),
+.tabMouldBody table.introduce tr td:nth-child(3){
+    width: 20%;
+    height: auto;
+}
+.tabMouldBody table.introduce tr td:nth-child(2){
+    width: 75%;
+    height: auto;
+    text-align: justify;
+    border-left: 1px solid #ebe8e2;
+    line-height: .42rem;
+}
+.tabMouldBody table.introduce tr td:nth-child(2){
+    width: 60%;
+    height: auto;
+    text-align: justify;
+    border-left: 1px solid #ebe8e2;
+    border-right: 1px solid #ebe8e2;
+    line-height: .42rem;
+}
+.tabMouldBody table.jclq tr td:nth-child(1){
+    width: 20%;
+}
+.tabMouldBody table.jclq tr td:nth-child(2){
+    width: 80%;
+}
+.tabMouldBody table.introduce tr:nth-child(1) td:nth-child(2){
+    text-align: center;
+}
+.tabMouldBody table.introduce1{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ebe8e2;
+    font-size: .28rem;
+    color: #7e6b5a;
+    text-align: center;
+    margin-top: .3rem;
+}
+.tabMouldBody table.introduce1 tr{
+    width: 100%;
+}
+.tabMouldBody table.introduce1 tr td{
+    height: 100%;
+}
+.tabMouldBody table.introduce1 tr:nth-child(1){
+    color: #9c8b7c;
+}
+.tabMouldBody table.introduce1 tr:nth-child(odd),
+.tabMouldBody table.introduce1 tr:nth-child(odd) td{
+    background: #f3f2ee;
+    width: 100%;
+}
+.tabMouldBody table.introduce1 tr td{
+    min-height: .6rem;
+    padding: .1rem;
+}
+.tabMouldBody table.introduce1 tr td:nth-child(1){
+    width: 33%;
+    height: auto;
+}
+.tabMouldBody table.introduce1 tr td:nth-child(2){
+    width: 33%;
+    height: auto;
+    text-align: center;
+    border-left: 1px solid #ebe8e2;
+    line-height: .42rem;
+}
+.tabMouldBody table.introduce1 tr td:nth-child(3){
+    width: 33%;
+    height: auto;
+    text-align: center;
+    border-left: 1px solid #ebe8e2;
+    line-height: .42rem;
+}
+.tabMouldBody table.introduce1 tr:nth-child(1) td:nth-child(3){
+    text-align: center;
+}
+.tabMouldBody div.note{
+    width: 100%;
+    height: auto;
+    font-size: .30rem;
+    line-height: .48rem;
+    margin: 0;
+}
+.tabMouldBody div.note ul li{
+    width: 100%;
+    margin-bottom: .1rem;
+}
+.tabMouldBody div.note ul li:last-child{
+    margin-bottom: 0;
+}
+.tabMouldBody div.note ul li .noteHead{
+    width: 100%;
+    height: auto;
+}
+.tabMouldBody div.note ul li .noteBody{
+    width: 100%;
+    height: auto;
+    padding-left: .2rem;
+}
+.tabMouldBody div.note1{
+    width: 100%;
+    height: auto;
+    font-size: .30rem;
+    line-height: .48rem;
+    margin-top: .3rem;
+}
+.tabMouldBody div.note1 .note1Introduce{
+    width: 100%;
+    height: auto;
+    font-size: .30rem;
+    line-height: .48rem;
+}
+.tabMouldBody div.note1 ul li{
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: .1rem;
+}
+.tabMouldBody div.note1 ul li .note1Head{
+    width: 5%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.tabMouldBody div.note1 ul li .note1Body{
+    width: 93%;
+    margin-left: 7%;
+}
+.tabMouldBody div#resetMargin ul li .note1Body{
+    width: 93%;
+    margin-left: 5%;
+}
+
+#resetMargin{
+    margin: 0;
+}
+.color9{
+    color: #999999;
+}
+.color6{
+    color: #666666;
+}
+.tabMouldHead{
+    width: 100%;
+    height: 0.32rem;
+    background: url(../img/szgpc.png) no-repeat left;
+    background-size: .1rem .32rem;
+    position: relative;
+    margin-bottom: .3rem;
+}
+.tabMouldHead h2{
+    width: 100%;
+    height: 0.32rem;
+    color: #f2314b;
+    font-size: .3rem;
+    font-weight: normal;
+    text-align: left;
+    line-height: 0.34rem;
+    margin-left: .16rem;
+}
+.tabMouldBody{
+    width: 100%;
+    height: auto;
+}
+.ball{
+    margin-left: .08rem;
+}
+.ball .redBall{
+    width: .22rem;
+    height: .22rem;
+    background: url(../img/red.png) no-repeat center;
+    background-size: .2rem .2rem;
+    margin-left: .04rem;
+    display: block;
+    float: left;
+}
+.ball .blueBall{
+    width: .22rem;
+    height: .22rem;
+    background: url(../img/blue.png) no-repeat center;
+    background-size: .2rem .2rem;
+    margin-left: .04rem;
+    display: block;
+    float: left;
+}
+.tabMouldBody table.illustrate{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ebe8e2;
+    font-size: .28rem;
+    color: #7e6b5a;
+}
+.tabMouldBody table.illustrate tr td:nth-child(1),
+.tabMouldBody table.illustrate tr td:nth-child(4){
+    width: 19%;
+    height: auto;
+}
+.tabMouldBody table.illustrate tr td:nth-child(2){
+    width: 35%;
+    height: auto;
+    text-align: left;
+    border-left: 1px solid #ebe8e2;
+}
+.tabMouldBody table.illustrate tr td:nth-child(3){
+    width: 27%;
+    height: auto;
+    text-align: justify;
+    border-left: 1px solid #ebe8e2;
+    border-right: 1px solid #ebe8e2;
+    line-height: .42rem;
+}
+.tabMouldBody table.illustrate tr td{
+    min-height: .3rem;
+    padding: .05rem;
+}
+.tabMouldBody table.daletou tr:nth-child(1),
+.tabMouldBody table.daletou tr:nth-child(1) td,
+.tabMouldBody table.daletou tr:nth-child(3),
+.tabMouldBody table.daletou tr:nth-child(3) td,
+.tabMouldBody table.daletou tr:nth-child(6),
+.tabMouldBody table.daletou tr:nth-child(6) td,
+.tabMouldBody table.daletou tr:nth-child(7),
+.tabMouldBody table.daletou tr:nth-child(7) td,
+.tabMouldBody table.daletou tr:nth-child(11),
+.tabMouldBody table.daletou tr:nth-child(11) td,
+.tabMouldBody table.daletou tr:nth-child(12),
+.tabMouldBody table.daletou tr:nth-child(12) td,
+.tabMouldBody table.daletou tr:nth-child(13),
+.tabMouldBody table.daletou tr:nth-child(13) td,
+.tabMouldBody table.daletou tr:nth-child(14),
+.tabMouldBody table.daletou tr:nth-child(14) td{
+    background: #f3f2ee;
+
+}
+.tabMouldBody table.daletou tr:nth-child(5),
+.tabMouldBody table.daletou tr:nth-child(7),
+.tabMouldBody table.daletou tr:nth-child(9),
+.tabMouldBody table.daletou tr:nth-child(10),
+.tabMouldBody table.daletou tr:nth-child(12),
+.tabMouldBody table.daletou tr:nth-child(13),
+.tabMouldBody table.daletou tr:nth-child(14){
+    border-top: .01rem solid #EBE8E2;
+}
+.tabMouldBody table.illustrate tr:nth-child(1) td:nth-child(2),
+.tabMouldBody table.illustrate tr:nth-child(1) td:nth-child(3){
+    text-align: center;
+}
+.tabMouldBody table.illustrate tr td:nth-child(1),
+.tabMouldBody table.illustrate tr td:nth-child(4){
+    width: 19%;
+    height: auto;
+    vertical-align: middle;
+    text-align: center;
+}.ssq .tabMouldBody table.doubleColor tr:nth-child(1),
+ .tabMouldBody table.doubleColor tr:nth-child(1) td,
+ .tabMouldBody table.doubleColor tr:nth-child(3),
+ .tabMouldBody table.doubleColor tr:nth-child(3) td,
+ .tabMouldBody table.doubleColor tr:nth-child(5),
+ .tabMouldBody table.doubleColor tr:nth-child(5) td,
+ .tabMouldBody table.doubleColor tr:nth-child(6),
+ .tabMouldBody table.doubleColor tr:nth-child(6) td,
+ .tabMouldBody table.doubleColor tr:nth-child(9),
+ .tabMouldBody table.doubleColor tr:nth-child(9) td,
+ .tabMouldBody table.doubleColor tr:nth-child(10),
+ .tabMouldBody table.doubleColor tr:nth-child(10) td,
+ .tabMouldBody table.doubleColor tr:nth-child(11),
+ .tabMouldBody table.doubleColor tr:nth-child(11) td{
+     background: #f3f2ee;
+ }
+.qlc table.illustrate tr:nth-child(odd),
+.qlc table.illustrate tr:nth-child(odd) td{
+    background: #f3f2ee;
+}
+#blueBall{
+    width: .22rem;
+    height: .28rem;
+    background: url(../img/blue.png) no-repeat center bottom;
+    background-size: .2rem .2rem;
+    display: inline-block;
+}
+.qlc .tabMouldBody div.note1{
+    width: 100%;
+    height: auto;
+    font-size: .28rem;
+    line-height: .46rem;
+    color: #999999;
+    margin-top: .3rem;
+}
+.qxc table.introduce tr td:nth-child(2){
+    width: 50%;
+    height: auto;
+    text-align: center;
+    border-left: 1px solid #ebe8e2;
+    border-right: 1px solid #ebe8e2;
+    line-height: .42rem;
+}
+.qxc table.introduce tr td:nth-child(3){
+    width: 30%;
+    height: auto;
+}

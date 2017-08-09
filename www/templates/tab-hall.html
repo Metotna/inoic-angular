@@ -1,0 +1,216 @@
+<ion-view view-title="双彩" hide-nav-bar="true">
+    <ion-content class="contentBG">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" does-continue="true" delegate-handle="product.bigImgList" auto-play="true">
+            <ion-slide ng-repeat="x in imglist">
+                <div class="auto-img">
+                    <img ng-src={{x}}>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        <div class="user-inform" style="margin-bottom: .2rem">
+            <span class="user-inform-left"><i class="icon iconfont icon-guangbo font-color"></i>热门彩种</span><span class="user-inform-right"><i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+
+        <div class="tab-list">
+            <div class="t-lists">
+                <div class="t-list" ng-click="goLotterylist()">
+                    <div class="t-list-icon"><img src="img/kaijiang@2x.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">开奖信息</span>
+                        <span class="dd">最新开奖信息</span>
+                    </div>
+                </div>
+                <div class="Diaphragm-line-vertical"></div>
+                <div class="t-list" ng-click="goqxc(3)">
+                    <div class="t-list-icon"><img src="img/3.png?0720"></div>
+                    <div class="t-list-text">
+                        <span class="tt">七星彩</span>
+                        <span class="dd">暂停销售</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="t-lists">
+                <div class="t-list" ng-click="gohall('practice.Soccerhall')">
+                    <div class="t-list-icon"><img src="img/1.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">竞彩足球</span>
+                        <span class="dd"></span>
+                    </div>
+                </div>
+                <div class="Diaphragm-line-vertical"></div>
+                <div class="t-list" ng-click="gohall('practice.basketballhall')">
+                    <div class="t-list-icon"><img src="img/2.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">竞彩篮球</span>
+                        <span class="dd"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="t-lists">
+                <div class="t-list" ng-click="tempfalg=!tempfalg">
+                    <div class="t-list-icon"><img src="img/11xuan5@2x.png?0720"></div>
+                    <div class="t-list-text">
+                        <span class="tt">11选5系列</span>
+                        <span class="dd">暂停销售</span>
+                    </div>
+                </div>
+                <div class="Diaphragm-line-vertical"></div>
+                <div class="t-list" ng-click="goSuperlot(6)">
+                    <div class="t-list-icon"><img src="img/6.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">大乐透</span>
+                        <span class="dd">3元赢取1600万</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="tempfalg" class="lot-falg">
+                <div class="t-lists">
+                    <div class="t-list" ng-click="gohall('practice.syxwhall',10)">
+                        <div class="t-list-icon"><img src="img/10.png?0720"></div>
+                        <div class="t-list-text">
+                            <span class="tt">浙江11选5</span>
+                            <span class="dd">暂停销售</span>
+                        </div>
+                    </div>
+                    <div class="Diaphragm-line-vertical"></div>
+                    <div class="t-list" ng-click="gohall('practice.syxwhall',9)">
+                        <div class="t-list-icon"><img src="img/9.png?0720"></div>
+                        <div class="t-list-text">
+                            <span class="tt">上海11选5</span>
+                            <span class="dd">暂停销售</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-lists">
+                    <div class="t-list" ng-click="gohall('practice.syxwhall',7)">
+                        <div class="t-list-icon"><img src="img/7.png?0720"></div>
+                        <div class="t-list-text">
+                            <span class="tt">江西11选5</span>
+                            <span class="dd">暂停销售</span>
+                        </div>
+                    </div>
+                    <div class="Diaphragm-line-vertical"></div>
+                    <div class="t-list" ng-click="gohall('practice.syxwhall',8)">
+                        <div class="t-list-icon"><img src="img/8.png?0720"></div>
+                        <div class="t-list-text">
+                            <span class="tt">山东11选5</span>
+                            <span class="dd">暂停销售</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="t-lists">
+                <div class="t-list" ng-click="gohall('practice.plshall',4)">
+                    <div class="t-list-icon"><img src="img/4.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">排列三</span>
+                        <span class="dd">猜三位赢数千元</span>
+                    </div>
+                </div>
+                <div class="Diaphragm-line-vertical"></div>
+                <div class="t-list" ng-click="goqxc(5)">
+                    <div class="t-list-icon"><img src="img/5.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">排列五</span>
+                        <span class="dd">猜五位数中10万</span>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="t-lists">
+                <div class="t-list" ng-click="goSuperlot(11)">
+                    <div class="t-list-icon"><img src="img/11.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">双色球</span>
+                        <span class="dd">猜7个号赢百万</span>
+                    </div>
+                </div>
+                <div class="Diaphragm-line-vertical"></div>
+                <div class="t-list" ng-click="goSuperlot(12)">
+                    <div class="t-list-icon"><img src="img/12.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">七乐彩</span>
+                        <span class="dd">暂停销售</span>
+                    </div>
+                </div>
+            </div>
+            <div class="t-lists">
+                <div class="t-list" ng-click="gohall('practice.plshall',13)">
+                    <div class="t-list-icon"><img src="img/13.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">福彩3D</span>
+                        <span class="dd">猜3个数赢千元</span>
+                    </div>
+                </div>
+                &lt;!&ndash;<div class="t-list" ng-click="gofast()">
+                    <div class="t-list-icon"><img src="img/kuai3@2x.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">快三</span>
+                        <span class="dd">猜7个号赢百万</span>
+                    </div>
+                </div>&ndash;&gt;
+                <div class="Diaphragm-line-vertical"></div>
+              &lt;!&ndash;  <div class="t-list" ng-click="gohall('practice.plshall',13)">
+                    <div class="t-list-icon"><img src="img/13.png"></div>
+                    <div class="t-list-text">
+                        <span class="tt">福彩3D</span>
+                        <span class="dd">猜3个数赢千元</span>
+                    </div>
+                </div>&ndash;&gt;
+            </div>-->
+<!--                         <div class="t-lists">
+                                <div class="t-list">
+                                    <div class="t-list-icon"><img src="img/11.png"></div>
+                                    <div class="t-list-text">
+                                        <span class="tt">双色球</span>
+                                        <span class="dd">追号更易中奖</span>
+                                    </div>
+                                </div>
+                                <div class="t-list">
+                                    <div class="t-list-icon"><img src="img/kuai3@2x.png"></div>
+                                    <div class="t-list-text">
+                                        <span class="tt">快三</span>
+                                        <span class="dd">2元赢取万元</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="t-lists">
+                                <div class="t-list" ng-click="gohall('practice.plshall',13)">
+                                    <div class="t-list-icon"><img src="img/13.png"></div>
+                                    <div class="t-list-text">
+                                        <span class="tt">福彩3D</span>
+                                        <span class="dd">猜3个数赢千元</span>
+                                    </div>
+                                </div>
+                                <div class="t-list">
+                                    <div class="t-list-icon"><img src="img/kuaile8@2x.png"></div>
+                                    <div class="t-list-text">
+                                        <span class="tt">快乐8</span>
+                                        <span class="dd">2元赢取万元</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="t-lists">
+                                <div class="t-list">
+                                    <div class="t-list-icon"><img src="img/shishicai@2x.png"></div>
+                                    <div class="t-list-text">
+                                        <span class="tt">时时彩</span>
+                                        <span class="dd">猜数时时开奖</span>
+                                    </div>
+                                </div>
+                                <div class="t-list">
+                                    <div class="t-list-icon"><img src="img/gengduo@2x.png"></div>
+                                    <div class="t-list-text">
+                                        <span class="tt">自定义设置</span>
+                                        <span class="dd">更多彩种</span>
+                                    </div>
+                                </div>
+                            </div>-->
+        </div>
+    </ion-content>
+    <div class="hall-user" ng-click="goUser()">
+        <a class="iconfont icon-wo"></a>
+    </div>
+    <!-- <div class="Backdrops-new"><img src="../img/liulanqi.png"><div class="back-close"><a class="icon iconfont icon-tianjia"></a></div></div> -->
+</ion-view>

@@ -1,0 +1,19 @@
+<ion-view view-title="具体问题" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">问题内容</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content has-bouncing="false" class="help-concrete">
+		<div class="qustion">
+			<div class="qt" >{{cotqa.question}}</div>
+			<div class="aw" >{{cotqa.answer}}</div>
+		</div>
+		<div class="elqst" >
+			<div class="text">其他问题</div>
+			<div class="elqcot" ng-repeat="x in ary" ng-click="changeqa(x.aa,x.bb)">{{x.qusetion}}</div>
+		</div>
+    </ion-content>
+</ion-view>

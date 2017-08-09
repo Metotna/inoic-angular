@@ -1,0 +1,63 @@
+<div ng-controller="SoccerhallCtrl">
+    <section>
+        <dl class="match-list" data-gamedate="20170524" ng-repeat="ss in list">
+            <dt class="match-divider">{{ss.time}}   星期二  <em class="date-num">{{ss.file|gamelist:3}}</em>场比赛可投<i class="arrow-ico trans-tf"></i></dt>
+            <dd class="match-item" data-gameid="{{bqc.gameid}}" data-bettingid="2" ng-repeat="bqc in ss.file" ng-if="bqc.bqcopen == true">
+                <div class="league-nd-time"> <span class="rows game-league">{{bqc.matchname}}</span>
+                    <span class="rows game-num">007</span>
+                    <span class="rows game-time">22:58截止</span>
+                    <span class="showAnalysis"><i class="arrow-ico"></i></span>
+                </div>
+                <div class="options-block markHL-row-yellow">
+                    <span>{{bqc.hname}}</span>
+                    <span>VS</span>
+                    <span>{{bqc.gname}}</span>
+                    <div class="bqc">
+                           <span class="rows-r">
+                               <span class="betbtns" data-resultid="0" data-rate={{bqc.ss}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">胜-胜</span>
+                                   <span class="betinfo">{{bqc.ss|number:2}}</span>
+                               </span>
+                              <span class="betbtns" data-resultid="1" data-rate={{bqc.sp}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">胜-平</span>
+                                   <span class="betinfo">{{bqc.sp|number:2}}</span>
+                               </span>
+                               <span class="betbtns" data-resultid="2" data-rate={{bqc.sf}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">胜-负</span>
+                                   <span class="betinfo">{{bqc.sf|number:2}}</span>
+                               </span>
+                           </span>
+                        <span class="rows-r">
+                               <span class="betbtns" data-resultid="3" data-rate={{bqc.ps}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">平-胜</span>
+                                   <span class="betinfo">{{bqc.ps|number:2}}</span>
+                               </span>
+                              <span class="betbtns" data-resultid="4" data-rate={{bqc.pp}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">平-平</span>
+                                   <span class="betinfo">{{bqc.pp|number:2}}</span>
+                               </span>
+                               <span class="betbtns" data-resultid="5" data-rate={{bqc.pf}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">平-负</span>
+                                   <span class="betinfo">{{bqc.pf|number:2}}</span>
+                               </span>
+                           </span>
+                        <span class="rows-r">
+                               <span class="betbtns" data-resultid="6" data-rate={{bqc.fs}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">负-胜</span>
+                                   <span class="betinfo">{{bqc.fs|number:2}}</span>
+                               </span>
+                              <span class="betbtns" data-resultid="7" data-rate={{bqc.fp}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">负-平</span>
+                                   <span class="betinfo">{{bqc.fp|number:2}}</span>
+                               </span>
+                               <span class="betbtns" data-resultid="8" data-rate={{bqc.ff}} data-bettingid="2" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">负-负</span>
+                                   <span class="betinfo">{{bqc.ff|number:2}}</span>
+                               </span>
+                           </span>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+    </section>
+</div>

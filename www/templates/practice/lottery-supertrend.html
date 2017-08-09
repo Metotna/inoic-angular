@@ -1,0 +1,146 @@
+<ion-view view-title="走势图" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har seven-h">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">{{context}}-走势图</span>
+        <a class="icon iconfont icon-chilun  zst-a" ng-click="choosebox()"></a>
+        <!-- <div class=" sve-h" ng-click="Gohome()"><a class="icon iconfont icon-shouyeshouye  zst-home "></a></div>
+ -->
+    </ion-header-bar>
+    <div class="zst-head">
+        <div ng-click="pagechange(0)" ng-class="{true:'',false:'zst-h-a'}[changefalg]">近期开奖</div>
+        <div ng-click="pagechange(1)" ng-class="{false:'',true:'zst-h-a'}[changefalg]">走势图</div>
+    </div> 
+
+
+    <div ng-show="cgfalg">
+        <div class="zia-head">
+            <div style="width:17.3%;">期次</div>
+            <div style="width:48%;">开奖号码</div>
+            <div style="width:17.3%;" class="zia-h-c">大小比</div>
+            <div style="width:17.3%;">奇偶比</div>
+        </div> 
+        <ion-content class="zsts" direction="y" has-bouncing="false"  delegate-handle="orderlist">
+            <li class="zst-o-list" ng-repeat="x in allscp " ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-s'" r-F>
+                <span style="width:17.3%">{{x.pid.slice(2)}}期</span>
+                <span style="width:48%;" class="zst-o-l-n">
+                <div class="zst-oln " ng-class="{6:'super-oln',11:'double-oln',12:'double-oln'}[type]">
+                    <div ng-repeat="y in x.acode.split(',') track by $index" >{{y}}</div></div>
+                </span>
+                <span style="width:17.3%;" class="zol-c">{{x.dx}}</span>
+                <span style="width:17.3%;">{{x.qo}}</span>
+            </li>
+        </ion-content>
+    </div>
+    
+    <!-- 大乐透 && 双色球 -->
+    <div ng-if="sfalgs && type!=12 "  ng-show="!cgfalg">
+        <div class="st-h-c" >
+            <div ng-class="{6:'st-is-c',11:'st-is-ss'}[type]">
+                <li style="width:1.3rem">期次</li>
+                <li ng-repeat="y in aryb track by $index ">{{y}}</li>
+            </div>
+        </div>
+        <ion-content class="zsts" direction="xy" has-bouncing="false"  overflow-scroll='false' on-scroll="scrolls()" delegate-handle='dltcon' >
+            <div class="st-is-b" ng-class="{6:'st-is-c',11:'st-is-ss'}[type]" >
+                <li class="st-list st-lists" ng-repeat="x in allscp " ng-class-odd="'zst-l-d'" ng-class-even="'zst-l-s'">
+                    <div style="width:1.3rem;">{{x.pid}}期</div>
+                    <div ng-repeat="y in ylcp[$index] track by $index" ng-class="{6:'super-ball',11:'double-ball'}[type]" >
+                    <span ng-class="checkst(acp[$parent.$index],$index)==true?'zibh-b-span':''">{{y}}</span></div>
+                </li>
+            </div>
+            <div class="st-is-b  st-is-cs"  ng-class="{6:'st-is-c',11:'st-is-ss'}[type]" ng-if="countflag">
+                <li class="st-list st-lists"  ng-class="{6:'st-is-c',11:'st-is-ss'}[type]" >
+                    <div class="st-l-cor">出现次数</div>
+                    <div ng-repeat="x in cxs track by $index"><span >{{x}}</span></div>
+                </li>
+                <li class="st-list st-lists"  ng-class="{6:'st-is-c',11:'st-is-ss'}[type]" >
+                    <div class="st-l-cor">平均遗漏</div>
+                    <div ng-repeat="x in jyl track by $index"><span >{{x}}</span></div>
+                </li>
+                <li class="st-list st-lists"  ng-class="{6:'st-is-c',11:'st-is-ss'}[type]">
+                    <div class="st-l-cor">最大遗漏</div>
+                    <div ng-repeat="x in zyl track by $index"><span>{{x}}</span></div>
+                </li> 
+                <li class="st-list st-lists"  ng-class="{6:'st-is-c',11:'st-is-ss'}[type]">
+                    <div class="st-l-cor">最大连出</div>
+                    <div ng-repeat="x in zlc track by $index"><span>{{x}}</span></div>
+                </li>
+            </div>
+        </ion-content>
+    </div>
+        <!-- 七乐彩 -->
+    <div ng-if="sfalgs && type==12 "  ng-show="!cgfalg">
+        <div class="st-h-c" >
+            <div  class="st-qlc" >
+                <li style="width:1.3rem">期次</li>
+                <li ng-repeat="y in aryb track by $index ">{{y}}</li>
+            </div>
+        </div>
+        <ion-content class="zsts" direction="xy" has-bouncing="false"  overflow-scroll='false' on-scroll="scrolls()" delegate-handle='dltcon' >
+            <div class="st-is-b st-qlc" >
+                <li class="st-list st-lists" ng-repeat="x in allscp  " ng-class-odd="'zst-l-d'" ng-class-even="'zst-l-s'">
+                    <div style="width:1.3rem;">{{x.pid}}期</div>
+                    <div ng-repeat="y in ylcp[$index] |limitTo:30 track by $index " >
+                    <span ng-class="{1:'zibh-b-span',2:'zibh-b-span-lan'}[checkstb(acp[$parent.$index],$index)]">{{y}}</span></div>
+                </li>
+            </div>
+            <div class="st-is-b  st-is-cs st-qlc"   ng-if="countflag">
+                <li class="st-list st-lists st-qlc"   >
+                    <div class="st-l-cor">出现次数</div>
+                    <div ng-repeat="x in cxs |limitTo:30 track by $index"><span >{{x}}</span></div>
+                </li>
+                <li class="st-list st-lists st-qlc"   >
+                    <div class="st-l-cor">平均遗漏</div>
+                    <div ng-repeat="x in jyl |limitTo:30  track by $index"><span >{{x}}</span></div>
+                </li>
+                <li class="st-list st-lists st-qlc"  >
+                    <div class="st-l-cor">最大遗漏</div>
+                    <div ng-repeat="x in zyl |limitTo:30 track by $index"><span>{{x}}</span></div>
+                </li> 
+                <li class="st-list st-lists st-qlc"  >
+                    <div class="st-l-cor">最大连出</div>
+                    <div ng-repeat="x in zlc |limitTo:30 track by $index"><span>{{x}}</span></div>
+                </li>
+            </div>
+        </ion-content>
+    </div>
+
+    <ion-footer-bar class="bar-assertive zst-foot">
+        <div ng-click="golot()">继续投注{{context}}</div>
+    </ion-footer-bar>
+    <div class="zst-zsc" ng-if="assistantShow">
+        <ul>
+            <li class="zst-z-a">设置
+                <a href="" class="icon iconfont icon-tianjia" ng-click="confirme(false)"></a>
+            </li>
+            <li class="zst-z-b">
+                <span ng-click="chooseevent(0,30)" ng-class="{30:'zst-zba'}[flagsa]">近30期</span>
+                <span ng-click="chooseevent(0,50)" ng-class="{50:'zst-zba'}[flagsa]">近50期</span>
+                <span ng-click="chooseevent(0,100)" ng-class="{100:'zst-zba'}[flagsa]">近100期</span>
+            </li>
+            <li class="zst-z-c">
+                <div class="zst-radios" ng-click="chooseevent(1,true)">
+                    <div class="zst-radio"><div class="zst-radio-a zst-radio-aa">
+                        <div ng-class="{true:'zst-check'}[flagsb]" ></div></div>正序排列</div>
+                </div>
+                <div class="zst-radios" ng-click="chooseevent(1,false)">
+                    <div class="zst-radio"><div class="zst-radio-a zst-radio-aa">
+                        <div ng-class="{false:'zst-check'}[flagsb]" ></div></div>逆序排列</div>
+                </div>
+                <div class="zst-radios" ng-click="chooseevent(2,true)">
+                    <div class="zst-radio"><div class="zst-radio-a zst-radio-bb">
+                        <div ng-class="{true:'zst-check'}[flagsc]" ></div></div>统计显示</div>
+                </div>
+                <div class="zst-radios" ng-click="chooseevent(2,false)">
+                    <div class="zst-radio"><div class="zst-radio-a zst-radio-bb">
+                        <div ng-class="{false:'zst-check'}[flagsc]" ></div></div>统计隐藏</div>
+                </div>
+            </li>
+            <li class="zst-z-d">
+                <div ng-click="confirme(false)">取消</div>
+                <div ng-click="confirme(true)">确定</div>
+                <i></i>
+            </li>
+        </ul>
+    </div>
+</ion-view>

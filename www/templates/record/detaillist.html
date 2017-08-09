@@ -1,0 +1,36 @@
+<ion-view view-title="购彩记录" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">购彩记录</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <ion-refresher pulling-text="下拉刷新" refreshing-text="数据正在加载中..." on-refresh="bomdoPost()"></ion-refresher>
+        <div class="auto-img kzt" ng-if="bgimg">
+            <img src="img/kongzhuangtai.png">
+            <span>暂无记录</span>
+        </div>
+        <div class="detaillist list-item" ng-click="godetaail(d.bid)" ng-repeat="d in list">
+            <div class="detaillist-list-left">
+                <div class="detaillist-list-time">
+                    <span>{{d.bdate|itemlisttime:1}}</span>
+                    <span>{{d.bdate|itemlisttime:2}}</span>
+                </div>
+                <div class="detaillist-list-tit">
+                    <span class="tt">{{d.bdesc}}</span>
+                    <span class="bb">{{d.bcast|ordebcast}}{{d.money|number:2}}元</span>
+                </div>
+            </div>
+            <span class="detaillist-list-right font-color" ng-if="d.status ==1"><div style="float: left;text-align: right;color: #f05244;"><span>{{d.statusdesc}}</span><span class="zj">{{d.amoney}}元</span></div><i class="icon iconfont icon-jiantou"></i></span>
+            <span class="detaillist-list-right font-color" ng-if="d.status !=1">{{d.statusdesc}}<i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+        <ion-infinite-scroll on-infinite="loadParticulars()" distance="1%" ng-if="goods_load_over" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+<!--    <ion-footer-bar class="detaillist-foot">
+        <div class="detaillist-foot-butt">
+            继续投注竞彩足球
+        </div>
+    </ion-footer-bar>-->
+</ion-view>

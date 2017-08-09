@@ -1,0 +1,156 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har seven-h">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span ng-click="Shlist()" style="margin-left: 1.3rem;position: relative;">{{lotcot}}-{{title}}<i class="iconsub"></i></span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-jiagezoushi funnel zst-ico" ng-click="zstopen()"></a>
+            <a class="funnel dian" ng-click="assistant()"></a>
+        </div>
+    </ion-header-bar>
+    <div class="sc-heada" ng-click="cotchange()">{{nOrder.pid}}期，{{ntime[0]}}<i> {{ntime[1]}} </i>截止</div>
+    <div class="sch-f-a" ng-click="cotchange()">
+        <div><img src='img/jiantou.svg' class="sch-f-j"> </div>
+    </div>
+    <div class="sch-cot" ng-click="zstopen()">
+        <div class="scha-h schc-list-bgc">
+            <span class="schc-a">期次</span><span class="schc-b">开奖号码</span>
+        </div>
+        <li class='schc-list' ng-repeat="x in rAry" ng-class-even="'schc-list-bgc'" ng-class="$index == 0 ? 'schc-list-c':'';">
+            <div>{{x.pid}}期<i></i></div>
+            <div class="s-super-list schc-list-w " ng-class="{6:'super-olns',11:'double-olns',12:'double-olns'}[postobj.type]">
+            <span ng-repeat="y in x.acode.split(',') track by $index">{{y}}</span></div>
+        </li>
+    </div>
+    <div class="choose-list" ng-show="ShlistHeght" ng-click="Shlist()">
+        <ul>
+            <li ng-class="{true:'',false:'choosed'}[Bankerbetflag]" ng-click="Shlistlist(false)">普通投注</li>
+            <li ng-class="{true:'choosed',false:''}[Bankerbetflag]" ng-click="Shlistlist(true)">胆拖投注</li>
+        </ul>
+    </div>
+    <ion-content class="seven-cot" has-bouncing="false" overflow-scroll=true>
+        <div class="s-cot-head">
+        </div>
+        <!-- 普通投注 -->
+        <div ng-if="!Bankerbetflag">
+            <div class="sl-h-s">
+                <span style="padding-left: 2%;" ng-bind-html="scot"></span>
+                <div ng-click="shake()"><img src="img/yaoyiyao.svg">机选一注</div>
+            </div>
+            <div class="sc-cot">
+                <div class="scc-li  slc-li" ng-class="{12:'scc-qlc'}[postobj.type]">
+                    <div class="slc-ca">
+                        <li style="color:#000;" ng-repeat="m in arya">
+                            <div class="b_class temp_li" on-touch="numclick(m,2,0)" on-release="fangdahidea(m,2,0,$event)" on-drag="fangdahideb($event)">
+                                {{m}}
+                                <div class="scclr-big">
+                                    <span>{{m}}</span>
+                                </div>
+                            </div>
+                            <span ng-bind-html="omit.a[$index]"></span>
+                        </li>
+                    </div>
+                </div>
+                <hr style="margin-top:.25rem;">
+                <div class="scc-li  slc-li" style="height:2.4rem">
+                    <div class="slc-ca">
+                        <li style="color:#000;" ng-repeat="m in aryb">
+                            <div class="sc-activea temp_li" on-touch="numclick(m,2,1)" on-release="fangdahidea(m,2,1,$event)" on-drag="fangdahideb($event)">
+                                {{m}}
+                                <div class="scclr-big big-lan">
+                                    <span>{{m}}</span>
+                                </div>
+                            </div>
+                            <span ng-bind-html="omit.b[$index]"></span>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 胆拖投注 -->
+        <div ng-if="Bankerbetflag">
+            <div class="sc-cot">
+                <div class="super-l-span" ng-if="postobj.type!=12">胆码区{{postobj.type==6?'-前区　至少选择1个，最多选择4个':'-红球　至少选择1个，最多选择'+(numsa*1-1)+'个';}}</div>
+                <div class="super-l-span" ng-if="postobj.type==12">胆码区　至少选择1个，最多选择{{numsa*1-1}}个</div>
+                <div class="scc-li  slc-li" ng-class="{12:'scc-qlc'}[postobj.type]">
+                    <div class="slc-ca">
+                        <li style="color:#000;" ng-repeat="m in arya">
+                            <div class="b_class temp_lia" on-touch="numclick(m,0,0)" on-release="fangdahidea(m,0,0,$event)" on-drag="fangdahideb($event)">
+                                {{m}}
+                                <div class="scclr-big">
+                                    <span>{{m}}</span>
+                                </div>
+                            </div>
+                            <span ng-bind-html="omit.a[$index]"></span>
+                        </li>
+                    </div>
+                </div>
+                <div class="super-l-span" ng-if="postobj.type!=12">胆码区-{{postobj.type==6?'后区　最多选择1个':'蓝球　至少选择1个';}}</div>
+                <div class="scc-li  slc-li" style="height:2.4rem" ng-if="postobj.type!=12">
+                    <div class="slc-ca">
+                        <li style="color:#000;" ng-repeat="m in aryb">
+                            <div class="sc-activea temp_lib" on-touch="numclick(m,1,0)" on-release="fangdahidea(m,1,0,$event)" on-drag="fangdahideb($event)">
+                                {{m}}
+                                <div class="scclr-big big-lan">
+                                    <span>{{m}}</span>
+                                </div>
+                            </div>
+                            <span ng-bind-html="omit.b[$index]"></span>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-cot">
+                <div class="super-l-span" ng-if="postobj.type!=12">拖码区{{postobj.type==6?'-前区':'-红球';}}　至少选择2个</div>
+                <div class="super-l-span" ng-if="postobj.type==12">拖码区　至少选择2个</div>
+                <div class="scc-li  slc-li" ng-class="{12:'scc-qlc'}[postobj.type]">
+                    <div class="slc-ca">
+                        <li style="color:#000;" ng-repeat="m in arya">
+                            <div class="b_class temp_lia" on-touch="numclick(m,0,1)" on-release="fangdahidea(m,0,1,$event)" on-drag="fangdahideb($event)">
+                                {{m}}
+                                <div class="scclr-big">
+                                    <span>{{m}}</span>
+                                </div>
+                            </div>
+                            <span ng-bind-html="omit.a[$index]"></span>
+                        </li>
+                    </div>
+                </div>
+                <div class="super-l-span" ng-if="postobj.type==6">拖码区-后区　至少选择2个</div>
+                <div class="scc-li  slc-li" style="height:2.4rem" ng-if="postobj.type==6">
+                    <div class="slc-ca">
+                        <li style="color:#000;" ng-repeat="m in aryb">
+                            <div class="sc-activea temp_lib" on-touch="numclick(m,1,1)" on-release="fangdahidea(m,1,1,$event)" on-drag="fangdahideb($event)">
+                                {{m}}
+                                <div class="scclr-big big-lan">
+                                    <span>{{m}}</span>
+                                </div>
+                            </div>
+                            <span ng-bind-html="omit.b[$index]"></span>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="soccerhall-foots">
+        <div class="sf-l-t" ng-show="choosenums">
+            <div ng-click="rdnums(1)">1注</div>
+            <div ng-click="rdnums(5)">5注</div>
+            <div ng-click="rdnums(10)" class="sf-l-ta">10注</div>
+            <span></span>
+        </div>
+        <div class="sf-left" ng-click="deleteary()" ng-if="chooseflag">清除</div>
+        <div class="sf-left" ng-click="randomss()"  ng-if="!chooseflag">机选</div>
+        <div class="sf-cot">
+            <span>共 {{ending||0}} 注，{{ending*2||0}} 元</span>
+        </div>
+        <div class="sf-right" ng-click="postget()">确定</div>
+    </ion-footer-bar>
+    <div class="assistant" ng-show="assistantShow">
+        <ul>
+            <li ng-click="assistant(1)">购奖记录</li>
+            <li ng-click="assistant(2)">玩法介绍</li>
+            <li ng-click="assistant(3)">开奖信息</li>
+        </ul>
+    </div>
+</ion-view>

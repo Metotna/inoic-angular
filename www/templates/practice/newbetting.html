@@ -1,0 +1,104 @@
+<ion-view view-title="投注" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="lotteryadd()"><i></i></a>
+        <h1 class="title">投注</h1>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <div class="betlist-head">
+        <div class="bl-h-a">
+            <div ng-click="lotteryadd()"><img src="img/plus.png">继续选号</div>
+            <div ng-click="pcadd(1)" ng-if="superflag"><img src="img/plus.png">机选1注</div>
+            <div ng-click="pcadd(5)" ng-if="superflag"><img src="img/plus.png">机选5注</div>
+            <div ng-click="pcadd(10)" ng-if="superflag"><img src="img/plus.png">机选10注</div>
+        </div>
+        <div class="bl-h-b"><img src="img/round @2x.png"></div>
+    </div>
+    <div class="confirmation newbet-cf" ng-if="confirmation">
+        <section>
+            <div class="itemlist title">订单确认<span class="close" ng-click="CloseConfirmation()"></span></div>
+            <div class="itemlist"><span>当前订单</span><span>{{Transactiondata.betmoney|number:2}}元</span></div>
+            <div class="itemlist"><span>账户余额</span><span>{{Transactiondata.walletmoney|number:2}}元</span></div>
+            <div class="itemlist" ng-if="Transactiondata.chargemoney!=0"><span>需支付差额</span><span>{{Transactiondata.chargemoney|number:2}}元</span></div>
+            <pay-Type ng-if="Transactiondata.chargemoney!=0"></pay-Type>
+            <div class="buttom" ng-click="payment()">确认付款</div>
+        </section>
+    </div>
+    <ion-content class="newBetlist" id="tz-scr">
+        <div class="tianchong"></div>
+        <div class="newbet-lists beifalg" ng-repeat="x in ary" ng-if="betflag">
+            <i></i><img src="img/delete.png" ng-click="arydelete($index)">
+            <div class="sttus">{{remark(x)}}</div>
+            <span style="color: #F05244;">
+                <span ng-if="taflag($index,0)">[</span><span ng-repeat="x in ary[$index][0]">{{x}}</span><span ng-if="taflag($index,0)">]</span>
+            </span>
+            <span style="color: #448DF0;">
+                <span ng-if="taflag($index,1)">[</span><span ng-repeat="x in ary[$index][1]">{{x}}</span><span ng-if="taflag($index,1)">]</span>
+            </span>
+            <span style="color: #F05244;" ng-if="taflag($index)">
+                <span ng-repeat="x in ary[$index][2]">{{x}}</span>
+            </span>
+            <span style="color: #448DF0;" ng-if="taflag($index)">
+                <span ng-repeat="x in ary[$index][3]">{{x}}</span>
+            </span>
+        </div>
+        <div class="newbet-lists" ng-repeat="x in ary" ng-if="!betflag">
+            <i></i>
+            <img src="img/delete.png" ng-click="arydelete($index)">
+            <div class="sttus">{{remark(x)}}</div>
+            <span ng-repeat="y in x track by $index " class="newlist-span">
+                <dl ng-show="tempcheck(y)" class="newlist-dla">{{y}}</dl>
+                <dl ng-repeat="m in y" class="newlist-dla">{{m}}<dl>
+            </span>
+        </div>
+        <div class="Bet-sawtooth"></div>
+        <div class="newbet-bz"><img src="img/dagou.png" >
+            <span style="margin-left:.35rem;">我已满18岁并同意<span ng-click="golotage()" style="color: #00479d">《购彩协议》</span></span>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="soccerhall-foots">
+        <div class="foot-zh" ng-if="postobj.type==6" >
+            <div class="foot-z-zj"  >
+                <div class="newbet-bz" ng-click="msgboxs()">
+                    <dl class="gou" style="display: inline-block;margin-left: .3rem"><span class="ic" ng-if="checkfalg==1.5"></span></dl>
+                    <span style="color:#000">追加投注</span></div>
+            </div>
+            <!--         <div class="foot-z-zh">
+            <div class="newbet-bz"><input  id="stops" type="checkbox" ><span>中奖后停止追号
+              <a class="icon iconfont icon-bangzhu" ng-click=""></a>
+            </span></div>
+        </div> -->
+        </div>
+        <div class="foots-Manner">
+            <!--              <div class="foots-multiple">
+                <span class="double">追<input readonly="readonly" name="" type="tel" ng-model="additional" ng-change="dochange()" ng-blur="doblur()" >期</span>
+                <span class="foots-multiple-jia" >
+                    <div></div>
+                </span>
+                <span class="foots-multiple-jian" >
+                    <div></div>
+                    <div class="rotate"></div>
+                </span>
+            </div> -->
+            <div class="foots-multiple">
+                <span class="double">投<input name="" type="tel" ng-model="postobj.doublecount" ng-change="dochange()" ng-blur="doblur()" >倍</span>
+                <span class="foots-multiple-jia" ng-click="addSubtract(false,0)">
+                    <div></div>
+                </span>
+                <span class="foots-multiple-jian" ng-click="addSubtract(false,1)">
+                    <div></div>
+                    <div class="rotate"></div>
+                </span>
+            </div>
+        </div>
+        <div class="soccerhall-foots-clear" ng-click="clearlist()">清除</div>
+        <div class="soccerhall-foots-con Info">
+            <div class="newbetfoot">
+                <span ng-model="postobj.money">共 {{postobj.money }} 元</span>
+                <span>{{postobj.betcount}} 注 {{postobj.doublecount}} 倍 {{additional}} 期</span>
+            </div>
+        </div>
+        <div class="soccerhall-foots-Confirm" ng-click="dobill()">确认</div>
+    </ion-footer-bar>
+</ion-view>

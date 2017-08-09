@@ -1,0 +1,43 @@
+<ion-view view-title="付款成功" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="Gohome()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">付款成功</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="paid-content">
+        <div class="paid-min">
+            <div class="paid-imgok">
+                <img src="img/succeedOK.png">
+                <span>恭喜您付款成功！</span>
+            </div>
+            <p class="pid-min-p1"><span>{{orderid|limitTo:8}}</span>{{ball}}{{palytype}}购买成功</p>
+            <p class="pid-min-p2">您的订单已分配至合作投注站出票</p>
+        </div>
+        <div class="clientbox" ng-if="guid && !iswebapp">
+            <div class="clientboxL"><img src="img/gif.gif"></div>
+            <div class="clientboxR">
+                <div class="Danniu" ng-click="guide()" ng-if="navigator=='android'">
+                    <span class="xiazaicon">
+                        <i class="iandorid"></i><span>下载我猜客户端</span>
+                    </span>
+                </div>
+                <div class="Danniu" ng-click="guide()" ng-if="navigator=='ios'">
+                    <span class="xiazaicon">
+                        <i class="iios"></i><span>添加至桌面</span>
+                    </span>
+                </div>
+                <div class="font">及时获取中奖信息</div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="paid-foot">
+        <div class="paid-foot-buttleft" ng-click="Goagainpay()">
+           继续购买
+        </div>
+        <div class="paid-foot-buttright" ng-click="Godetai()">
+            查看订单
+        </div>
+    </ion-footer-bar>
+</ion-view>

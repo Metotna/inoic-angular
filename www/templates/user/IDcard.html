@@ -1,0 +1,29 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">身份绑定</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="IDcard-title">
+            账户提款前请先绑定账户信息
+        </div>
+        <div class="login-tab-con">
+            <form name="userLogin" ng-submit="doLogin()" novalidate="novalidate">
+                <p>
+                    <input name="name" type="text" ng-model="login.name" ng-readonly="SIOtype" ng-focus="userNameErrorOff()" ng-blur="userName()" placeholder="请输入真实姓名" />
+                    <span class="error" ng-show="usernameError"><i class="iconfont icon-chahao"></i>{{userNameErrorMsg}}</span>
+                </p>
+                <p class="login-tab-pwd">
+                    <input name="idcard" type="text"  ng-model="login.idcard" ng-readonly="SIOtype" ng-focus="passWordErrorOff()" ng-blur="passWord()" placeholder="身份证号码" />
+                </p>
+                <p ng-if="!SIOtype">
+                    <button class="submit-btn" ng-if="logintype" type="submit">提交</button>
+                    <button class="submit-btn" ng-if="!logintype" type="button" style="opacity: 0.6">提交</button>
+                </p>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

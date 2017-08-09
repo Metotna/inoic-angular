@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">修改密码</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG">
+        <div class="login-tab-con register-top">
+            <form name="userLogin" ng-submit="doRegister()" novalidate="novalidate">
+                <p>
+                    <input name="account" type="text" ng-model="register.oldpwd" ng-focus="cellPhoneErrorOff()" placeholder="请输入旧密码" />
+                    <span class="error" ng-show="cellPhoneError">{{cellPhoneErrorMsg}}</span><i ng-show="inputstate" class="iconfont icon-dagou register-phone-icon font-color"></i>
+                </p>
+                <p class="login-tab-pwd" id="logintabpwd">
+                    <input name="password" id="regpw3" type="password"  ng-model="register.newpwd" ng-focus="setPWDErrorOff()" ng-blur="setPWD()" placeholder="新密码为6-12位字母数字" />
+                    <span class="error" ng-show="setPWDError">{{setPWDErrorMsg}}</span>
+                    <i class="iconfont icon-iconfont17shifouxianshimimafou register-phone-icon font-YZM" ng-class="{true: 'register-pwdshow', false: ''}[setPWDType]" ng-click="ShowPassword3()"></i>
+                </p>
+                <p class="login-tab-pwd">
+                    <input name="confirmPWD" id="regpw4" type="password"  ng-model="register.confirmPWD" ng-focus="confirmPWDErrorOff()" ng-blur="confirmPWD()" placeholder="确认密码" />
+                    <span class="error" ng-show="confirmPWDError">{{confirmPWDErrorMsg}}</span>
+                    <i class="iconfont icon-iconfont17shifouxianshimimafou register-phone-icon font-YZM" ng-class="{true: 'register-pwdshow', false: ''}[sonfirmPWDType]" ng-click="ShowPassword4()"></i>
+                </p>
+                <p>
+                    <button class="submit-btn" type="submit">确认</button>
+                </p>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

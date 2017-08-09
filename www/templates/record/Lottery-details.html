@@ -1,0 +1,144 @@
+<ion-view view-title="开奖信息列表" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">开奖信息</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content  has-bouncing="false">
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="refreshAry()"></ion-refresher>
+        <!-- 七星彩 -->
+        <div class="lot-detail" ng-repeat="x in ary" ng-click="openlist(x.pid)" ng-if="checks(0)" >
+            <div class="lot-detail-list"  >
+                <div class="ldl-up">
+                    <span class="ldl-u-t">第{{x.pid}}期</span>
+                    <span class="ldl-u-z">{{x.timea}}（{{x.days}}）</span>
+                    <span ng-if="$index==0" class="ldl-icon">NEW</span> 
+                </div>
+                <div class="ldl-down" ng-class="$index==0?'ldl-new':''">
+                    <span ng-repeat="y in x.acode track by $index ">{{y}}</span>
+                </div> 
+                <a class="icon iconfont icon-jiantou" style="font-size:.36rem"  ng-class="{true:'atransform' }[x.pid==numfalg]"></a>     
+            </div>
+            <div class="lot-detil-order" ng-if="x.pid==numfalg" >
+                <span class="lot-detil-span">
+                    <li style="color: #333333;">本期销量</li>
+                    <li>{{x.gsale}}</li>
+                </span>
+                <span class="lot-detil-span">
+                    <li style="color: #333333;">累计奖池</li>
+                    <li>{{x.gpool}}</li>
+                </span>
+                <li class="lot-do-list ">
+                    <span>奖项</span>
+                    <span>中奖注数</span>
+                    <span>每注奖金</span>
+                </li>
+                <li class="lot-do-lists" ng-repeat="z in  x.ginfo"   ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-c'">
+                    <span>{{x.goldn[$index]}}</span>
+                    <span>{{x.ninfo[$index]}}</span>
+                    <span>{{z*1}}</span>
+                </li>
+            </div>
+        </div>   
+        <!-- 排列三 || 排列五 || 福彩3D -->
+        <div class="lot-detail" ng-repeat="x in ary" ng-click="openlist(x.pid)" ng-if="checks(1)" >
+            <div class="lot-detail-list">
+                <div class="ldl-up">
+                    <span class="ldl-u-t">第{{x.pid}}期</span>
+                    <span class="ldl-u-z">{{x.timea}}（{{x.days}}）</span>
+                    <span ng-if="$index==0" class="ldl-icon">NEW</span>
+                </div>
+                <div class="ldl-down" ng-class="$index==0?'ldl-new':''">
+                    <span ng-repeat="y in x.acode track by $index">{{y}}</span>
+                    <i class="fcd-sjh" ng-if="type==13" style="line-height: .36rem;margin-left:.13rem">试机号:<i ng-repeat="ss in x.sjh track by $index">{{ss}}</i></i>
+                </div>
+                <a class="icon iconfont icon-jiantou" style="font-size:.36rem" ng-class="{true:'atransform' }[x.pid==numfalg]"></a>
+            </div>
+            <div class="lot-detil-order" ng-if="x.pid==numfalg">
+                <span class="lot-detil-span" style="margin-left:25%">
+                    <li style="color: #333333;">本期销量</li>
+                    <li>{{x.gsale}}</li>
+                </span>
+                <li class="lot-do-list ">
+                    <span>奖项</span>
+                    <span>中奖注数</span>
+                    <span>每注奖金</span>
+                </li>
+                <li class="lot-do-lists" ng-repeat="z in  x.ginfo"   ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-c'">
+                    <span>{{x.goldn[$index]}}</span>
+                    <span>{{x.ninfo[$index]}}</span>
+                    <span>{{z*1}}</span>
+                </li>
+            </div>
+        </div>
+        <!-- 大乐透 || 双色球 || 七乐彩 -->
+        <div class="lot-detail" ng-repeat="x in ary" ng-click="openlist(x.pid)" ng-if="checks(2)" >
+            <div class="lot-detail-list"  >
+                <div class="ldl-up">
+                    <span class="ldl-u-t">第{{x.pid}}期</span>
+                    <span class="ldl-u-z">{{x.timea}}（{{x.days}}）</span>
+                    <span ng-if="$index==0" class="ldl-icon">NEW</span> 
+                </div>
+                <div class="ldl-down" ng-class="$index==0?'ldl-new':''">
+                    <span ng-if="type==6" ng-repeat="y in x.acode track by $index"  ng-class=" $index==5|| $index==6 ? 'color-blue':''" >{{y}}</span>
+                    <span ng-if="type==11" ng-repeat="y in x.acode track by $index" ng-class=" $index==6 ? 'color-blue':''" >{{y}}</span>
+                    <span ng-if="type==12" ng-repeat="y in x.acode track by $index" ng-class=" $index==7 ? 'color-blue':''" >{{y}}</span>
+                </div> 
+                <a class="icon iconfont icon-jiantou" style="font-size:.36rem" ng-class="{true:'atransform' }[x.pid==numfalg]"></a>     
+            </div>
+            <div class="lot-detil-order" ng-if="x.pid==numfalg" >
+            <div  ng-if="type!=12">
+                <span class="lot-detil-span">
+                    <li style="color: #333333;">本期销量</li>
+                    <li>{{x.gsale}}</li>
+                </span>
+                <span class="lot-detil-span">
+                    <li style="color: #333333;">累计奖池</li>
+                    <li>{{x.gpool}}</li>
+                </span>
+                <li class="lot-do-list ">
+                    <span>奖项</span>
+                    <span>中奖注数</span>
+                    <span>每注奖金</span>
+                </li>
+                <li class="lot-do-lists" ng-repeat="z in  x.ginfo track by $index"    ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-c'">
+                    <span>{{x.goldn[$index]}}</span>
+                    <span>{{x.ninfo[$index]}}</span>
+                    <span>{{z*1}}</span>
+                </li>
+            </div>
+                
+            </div>
+        </div>
+        <!-- 11选5 -->
+        <div class="lot-detail" ng-repeat="x in ary" ng-click="openlist(x.pid)" ng-if="checks(3)">
+            <div class="lot-detail-list" >
+                <div class="ldl-up">
+                    <span class="ldl-u-t">第{{x.pid}}期</span>
+                    <span class="ldl-u-z">{{x.timea}}（{{x.days}}）</span>
+                    <span ng-if="$index==0" class="ldl-icon">NEW</span> 
+                </div>
+                <div class="ldl-down" ng-class="$index==0?'ldl-new':''">
+                    <span ng-repeat="y in x.acode track by $index">{{y}}</span>
+                </div> 
+                <a class="icon iconfont icon-jiantou" style="font-size:.36rem" ng-class="{true:'atransform' }[x.pid==numfalg]"></a>     
+            </div>
+            <div class="lot-detil-order" ng-if="x.pid==numfalg" >
+                <li class="lot-do-list eleven-f">
+                    <span>奖项</span>
+                    <span>每注奖金</span>
+                </li>
+                <li class="lot-do-lists eleven-f" ng-repeat="z in  x.ginfo"   ng-class-even="'zst-l-d'" ng-class-odd="'zst-l-c'">
+                    <span>{{x.goldn[$index]}}</span>
+                    <span>{{z*1}}</span>
+                </li>  
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="conScorll()" distance="1%" immediate-check="false" ng-if="infintefalg"></ion-infinite-scroll>
+    </ion-content>
+    <ion-footer-bar class="detaillist-foot">
+        <div class="detaillist-foot-butt" ng-click="golot()">继续投注{{textcot}}</div>
+    </ion-footer-bar>
+</ion-view>

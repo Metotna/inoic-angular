@@ -1,0 +1,32 @@
+<ion-view view-title="登录" hide-nav-bar="true">
+  <ion-header-bar class="bar-background Soccerhall-har">
+    <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+    <span style="margin-left: 1.3rem;position: relative;">登录</span>
+    <div class="Soccerhall-har-right">
+      <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+<!--    <div class="login-banner">
+    </div>-->
+    <div class="login-tab-con">
+      <form name="userLogin" ng-submit="doLogin()" novalidate="novalidate">
+        <p>
+          <input name="username" type="tel" ng-model="login.account" placeholder="请输入手机号码" ng-change="changelogin()"/>
+          <span class="error" ng-show="usernameError"><i class="iconfont icon-chahao"></i>{{userNameErrorMsg}}</span>
+        </p>
+        <p class="login-tab-pwd">
+          <input name="password" id="regpw5" type="password"  ng-model="login.pwd" placeholder="请输入密码" ng-change="changelogin()" />
+          <i class="icon iconfont icon-iconfont17shifouxianshimimafou loginPwdShow" ng-click="ShowPassword5()"></i>
+          <!--<span class="error" ng-show="passwordError"><i class="iconfont icon-chahao"></i>{{passWordErrorMsg}}</span>-->
+          <span class="reset-pwd-txt lost-pwd" ng-click="goLostPWD()">忘记密码</span>
+        </p>
+        <p>
+          <button class="submit-btn" type="submit">登录</button>
+         <!-- <button class="submit-btn" ng-if="!logintype" type="button" style="opacity: 0.6">登录</button>-->
+        </p>
+        <p class="reset-pwd-txt reset-top" ng-click="goRegister()">注册新账户</p>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

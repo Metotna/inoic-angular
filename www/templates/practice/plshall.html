@@ -1,0 +1,105 @@
+<ion-view view-title="排列三" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span ng-click="Shlist()" style="margin-left: 1.3rem;position: relative;">{{plstext}}<i class="iconsub"></i></span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-jiagezoushi funnel" ng-click="goqxc(type)"></a>
+            <a class="funnel dian" ng-click="assistant(0)"></a>
+        </div>
+    </ion-header-bar>
+    <div class="sc-heada" ng-click="cotchange()">{{list.pid}}期，{{ntime[0]}}<i> {{ntime[1]}} </i>截止</div>
+    <div class="sch-f-a" ng-click="cotchange()">
+        <div><img src='img/jiantou.svg' class="sch-f-j"> </div>
+    </div>
+    <div class="sch-cot" ng-click="goqxc(type)">
+        <div class="scha-h schc-list-bgc ">
+            <span class="schc-a">期次</span><span class="schc-b " style="text-align: center" ng-class="{4:'schc-pls',13:'schc-fcd'}[type]" >开奖号码</span>
+            <span class="schc-c">形态</span> <span class="schc-c" ng-if="type==13">试机号</span>
+        </div>
+        <li class='schc-list' ng-repeat="x in list.rowsp" ng-class-even="'schc-list-bgc'" ng-class="$index == 0 ? 'schc-list-c':'';" >
+            <div>{{x.pid}}期<i></i></div>
+            <div class="schc-list-w" ng-class="{4:'schc-pls',13:'schc-fcd'}[type]"><p style="margin:0 auto;width:1.2rem;border:none;height: .5rem"><span style="text-align: center;" ng-repeat="y in x.acode.split(',') track by $index"  >{{y}}</span></p></div>
+            <i class="schc-c" ng-class="{4:'schc-pls-bor',13:'schc-fcd-bor'}[type]">{{x.zhxt}}</i><i class="schc-c" ng-if="type==13"><font ng-repeat="yy in x.sjh.split(',') track by $index">{{yy}}</font></i>
+        </li>
+    </div>
+    <ion-content has-bouncing="false" class="seven-cot" delegate-handle="plscon">
+        <div class="s-cot-head">
+        </div>
+        <div class="sc-headb">
+            <span>{{ts2}}</span>
+            <span>{{ts1}}<i>{{ts3}}</i></span>
+            <div ng-click="Random()"><img src="img/yaoyiyao.svg">机选一注</div>
+        </div>
+        <div class="sc-cot" id="pl3">
+            <div class="scc-li" ng-repeat="x in ary track by $index">
+                <div class="sccl-l">
+                    <span>{{$index|plsplace:plstext}}</span><i></i>
+                    <span ng-click="miss()" ng-if="missflag">遗漏</span><i></i>
+                </div>
+                <div class="sccl-r">
+                    <li style="color:#000;" ng-repeat="m in aryb">
+                        <div data-num={{m}} class="b_class temp_li"
+                             on-touch="numclick($parent.$index,m,$event)"
+                             on-release="fangdahidea($parent.$index,m,$event)"
+                             on-drag="fangdahideb($parent.$index,m,$event)">{{m}}
+                            <div class="scclr-big">
+                                <span>{{m}}</span>
+                            </div>
+                        </div>
+                        <span ng-if="missflag">{{}}</span>
+                    </li>
+                    <!--<li style="color:#000;" ng-repeat="m in aryb">
+                        <div class="b_class temp_li"
+                             on-touch="numclick($parent.$index,m)"
+                             on-release="fangdahidea($parent.$index,m)"
+                             on-drag="fangdahideb($parent.$index,m)">{{m}}
+                        <span class="scclr-big">{{m}}</span>
+                        </div>
+                        <span ng-if="missflag">222</span>
+                    </li>-->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <!--玩法筛选-->
+    <div class="Soccerhall-playlist" ng-class="{true: 'Soccerhall-headyes', false: ''}[ShlistHeght]">
+        <ul ng-if="type == 4">
+            <li data-pls="zx3" ng-class="{true: 'ott-img', false: ''}[plstext == '直选三']">直选三</li>
+            <li data-pls="z3_ds">组三单式</li>
+            <li data-pls="z3_fs">组三复式</li>
+            <li data-pls="z6_fs">组选六</li>
+            <li data-pls="zx_hz">直选三和值</li>
+        </ul>
+        <ul ng-if="type == 13">
+            <li data-pls="zx3" ng-class="{true: 'ott-img', false: ''}[plstext == '直选']">直选</li>
+            <li data-pls="z3_ds">组三单式</li>
+            <li data-pls="z3_fs">组三复式</li>
+            <li data-pls="z6_fs">组六</li>
+            <li data-pls="zx_hz">直选和值</li>
+            <li data-pls="z3_hz">组三和值</li>
+            <li data-pls="z6_hz">组六和值</li>
+        </ul>
+    </div>
+    <!--助手-->
+    <div class="assistant" ng-if="assistantShow" ng-click="assistant(0)">
+        <ul>
+            <li ng-click="assistant(1)">购奖记录</li>
+            <li ng-click="assistant(2)">玩法介绍</li>
+            <li ng-click="assistant(3)">开奖信息</li>
+        </ul>
+    </div>
+    <ion-footer-bar class="soccerhall-foots">
+        <div class="sf-l-t" id="plsjxd" ng-if="plsjxd">
+            <div ng-click="rdnums(1)">1注</div>
+            <div ng-click="rdnums(5)">5注</div>
+            <div ng-click="rdnums(10)" class="sf-l-ta">10注</div>
+            <span></span>
+        </div>
+        <div class="sf-left" ng-click="deleteary()"  ng-if="gamesession || dtma">清除</div>
+        <div class="sf-left" ng-click="jixuan()"  ng-if="!gamesession && !dtma">机选</div>
+        <div class="sf-cot">
+            <span>共{{gamesession}}注<span>{{2*gamesession}}元</span></span>
+        </div>
+        <div class="sf-right" ng-click="Confirm()">确定</div>
+    </ion-footer-bar>
+</ion-view>

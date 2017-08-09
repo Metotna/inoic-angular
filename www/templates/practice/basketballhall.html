@@ -1,0 +1,492 @@
+<ion-view view-title="竞彩篮球" hide-nav-bar="true" class="opensss">
+    <ion-header-bar class="bar-background Soccerhall-har" style="position: relative;">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span ng-click="Shlist()" style="margin-left: 1.3rem;position: relative;">{{playlisttext}}<i class="iconsub"></i></span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shaixuan funnel" ng-click="Hfiltrate()"></a>
+            <a class="funnel dian" ng-click="assistant(0)"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content has-bouncing="false">
+        <div ng-if="!list.length && bgimg" class="zqhallnull">
+            <img src="img/lqnull.png">
+        </div>
+        <div ng-if="list.length">
+        <!--单关胜负-->
+        <section ng-if="playlistdata==1 || playlistdata==7">
+            <dl class="match-list" ng-repeat="ss in list">
+                <dt class="match-divider">{{ss.time}}<span class="hall-mar">({{ss.time|getweek}})</span><em class="date-num">{{ss.file|gamelist:6:gamearry}}</em>场比赛可投<i class="arrow-ico trans-tf"></i></dt>
+                <dd class="match-item" data-gameid="{{spf.gameid}}" ng-repeat="spf in ss.file" ng-if="spf.sfopen == true && gamearry.indexOf(spf.matchname) != -1">
+                    <div class="league-nd-time"> <span class="rows game-league">{{spf.matchname}}</span>
+                        <span class="rows game-num">{{spf.gamename}}</span>
+                        <span class="rows game-time">{{spf.endsale}}截止</span>
+                        <span class="showAnalysis"><i class="arrow-ico"></i></span>
+                    </div>
+                    <div class="options-block markHL-row-yellow">
+                        <div class="vs-box">
+                            <span>{{spf.gname}}(客)</span>
+                            <span class="vs">VS</span>
+                            <span>{{spf.hname}}(主)</span>
+                        </div>
+                        <div class="sf AVBTitle">
+                        <span class="rows-l">
+                                    <span class="betbtns" data-resultid="1" data-rate={{spf.f}}  data-bettingid="0" data-gameid={{spf.gameid}}>
+                                        <span>客胜</span>
+                                        <span>{{spf.f|number:2}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="0" data-rate={{spf.s}} data-bettingid="0" data-gameid={{spf.gameid}}>
+                                        <span>主胜</span>
+                                        <span>{{spf.s|number:2}}</span>
+                                    </span>
+                        </span>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </section>
+        <!--单关让球胜平负-->
+        <section ng-if="playlistdata==2 || playlistdata==8">
+            <dl class="match-list" ng-repeat="ss in list">
+                <dt class="match-divider">{{ss.time}}<span class="hall-mar">{{ss.time|getweek}})</span><em class="date-num">{{ss.file|gamelist:7:gamearry}}</em>场比赛可投<i class="arrow-ico trans-tf"></i></dt>
+                <dd class="match-item" data-gameid="{{rspf.gameid}}" data-bettingid="4" ng-repeat="rspf in ss.file" ng-if="rspf.rfsfopen == true && gamearry.indexOf(rspf.matchname) != -1">
+                    <div class="league-nd-time"> <span class="rows game-league">{{rspf.matchname}}</span>
+                        <span class="rows game-num">{{rspf.gamename}}</span>
+                        <span class="rows game-time">{{rspf.endsale}}截止</span>
+                        <span class="showAnalysis"><i class="arrow-ico"></i></span>
+                    </div>
+                    <div class="options-block markHL-row-yellow">
+                        <div class="vs-box">
+                            <span>{{rspf.gname}}(客)</span>
+                            <span class="vs">VS</span>
+                            <span>{{rspf.hname}}(主)</span>
+                        </div>
+                        <div class="rfsf AVBTitle">
+                        <span class="rows-l">
+                                    <span class="betbtns" data-resultid="0" data-rate={{rspf.rs}} data-bettingid="1" data-gameid="{{rspf.gameid}}">
+                                        <span>客胜</span>
+                                        <span>{{rspf.rf|number:2}}</span>
+                                    </span>
+                                     <span class="game-type">
+                                         <span>主</span>
+                                        <span>{{rspf.lose|number:2}}</span>
+                                     </span>
+                                    <span class="betbtns" data-resultid="1" data-rate={{rspf.rf}} data-bettingid="1" data-gameid="{{rspf.gameid}}">
+                                        <span>主胜</span>
+                                        <span>{{rspf.rs|number:2}}</span>
+                                    </span>
+                                </span>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </section>
+        <!--单关大小分-->
+        <section ng-if="playlistdata==4 || playlistdata==10">
+            <dl class="match-list" ng-repeat="ss in list">
+                <dt class="match-divider">{{ss.time}}<span class="hall-mar">({{ss.time|getweek}})</span><em class="date-num">{{ss.file|gamelist:9:gamearry}}</em>场比赛可投<i class="arrow-ico trans-tf"></i></dt>
+                <dd class="match-item" data-gameid="{{bqc.gameid}}" data-bettingid="2" ng-repeat="bqc in ss.file" ng-if="bqc.dxfopen == true && gamearry.indexOf(bqc.matchname) != -1">
+                    <div class="league-nd-time"> <span class="rows game-league">{{bqc.matchname}}</span>
+                        <span class="rows game-num">{{bqc.gamename}}</span>
+                        <span class="rows game-time">{{bqc.endsale}}截止</span>
+                        <span class="showAnalysis"><i class="arrow-ico"></i></span>
+                    </div>
+                    <div class="options-block markHL-row-yellow">
+                        <div class="vs-box">
+                            <span>{{bqc.gname}}(客)</span>
+                            <span class="vs">VS</span>
+                            <span>{{bqc.hname}}(主)</span>
+                        </div>
+                        <div class="dxf AVBTitle">
+                           <span class="rows-r">
+                               <span class="betbtns" data-resultid="0" data-rate={{bqc.dy}} data-bettingid="3" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">大</span>
+                                   <span class="betinfo">{{bqc.dy|number:2}}</span>
+                               </span>
+                              <span class="fraction">
+                                   {{bqc.zlose|number:2}}
+                               </span>
+                               <span class="betbtns" data-resultid="1" data-rate={{bqc.xy}} data-bettingid="3" data-gameid="{{bqc.gameid}}">
+                                   <span class="fen">小</span>
+                                   <span class="betinfo">{{bqc.xy|number:2}}</span>
+                               </span>
+                           </span>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </section>
+        <!--单关胜分差-->
+        <section ng-if="playlistdata==3 || playlistdata==9">
+            <dl class="match-list" ng-repeat="ss in list" ng-init="outerIndex=$index">
+                <dt class="match-divider">{{ss.time}}<span class="hall-mar">({{ss.time|getweek}})</span><em class="date-num">{{ss.file|gamelist:8:gamearry}}</em>场比赛可投<i class="arrow-ico trans-tf"></i></dt>
+                <dd class="match-item" data-gameid="{{cbf.gameid}}" data-bettingid="2" ng-repeat="cbf in ss.file" ng-if="cbf.sfcopen == true && gamearry.indexOf(cbf.matchname) != -1">
+                    <div class="league-nd-time"> <span class="rows game-league">{{cbf.matchname}}</span>
+                        <span class="rows game-num">{{cbf.gamename}}</span>
+                        <span class="rows game-time">{{cbf.endsale}}截止</span>
+                        <span class="showAnalysis"><i class="arrow-ico"></i></span>
+                    </div>
+                    <div class="options-block markHL-row-yellow">
+                        <div class="vs-box">
+                            <span>{{cbf.gname}}(客)</span>
+                            <span class="vs">VS</span>
+                            <span>{{cbf.hname}}(主)</span>
+                        </div>
+                        <div class="bqc-block AVBTitle" ng-click="showPopup(cbf,outerIndex,$index)">
+                            {{cbf.result|Filresult}}
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </section>
+        <!--混合-->
+        <section ng-if="playlistdata==5 || playlistdata==11">
+            <dl class="match-list" ng-repeat="ss in list" ng-init="outerIndex=$index">
+                <dt class="match-divider">{{ss.time}}<span class="hall-mar">({{ss.time|getweek}})</span><em class="date-num">{{ss.file.length}}</em>场比赛可投<i class="arrow-ico trans-tf"></i></dt>
+                <dd class="match-item" data-gameid={{hh.gameid}} ng-repeat="hh in ss.file" ng-if="gamearry.indexOf(hh.matchname) != -1">
+                    <div class="league-nd-time"> <span class="rows game-league">{{hh.matchname}}</span>
+                        <span class="rows game-num">{{hh.gamename}}</span>
+                        <span class="rows game-time">{{hh.endsale}}截止</span>
+                        <span class="showAnalysis"><i class="arrow-ico"></i></span>
+                    </div>
+                    <div class="options-block markHL-row-yellow">
+                        <div class="vs-box">
+                            <span>{{hh.gname}}(客)</span>
+                            <span class="vs">VS</span>
+                            <span>{{hh.hname}}(主)</span>
+                        </div>
+                        <div class="grouplq AVBTitle">
+                            <div class="game-area">
+                                <span class="rows-l sfpfalse" ng-if="hh.sfopen == false">
+                                        暂未开盘胜负平玩法
+                                </span>
+                                <span class="rows-l" ng-if="hh.sfopen == true">
+                                       <span class="betbtns" data-resultid="1" data-rate={{hh.f}}  data-bettingid="0" data-gameid={{hh.gameid}}>
+                                        <span>客胜</span>
+                                        <span>{{hh.f|number:2}}</span>
+                                    </span>
+                                    <span class="gamedepict">
+                                        胜负
+                                    </span>
+                                    <span class="betbtns" data-resultid="0" data-rate={{hh.s}} data-bettingid="0" data-gameid={{hh.gameid}}>
+                                        <span>主胜</span>
+                                        <span>{{hh.s|number:2}}</span>
+                                    </span>
+                                </span>
+                                <span class="rows-l sfpfalse" ng-if="hh.rfsfopen == false">
+                                        暂未开盘让分胜负平玩法
+                                </span>
+                                <span class="rows-l" ng-if="hh.rfsfopen == true">
+                                     <span class="betbtns" data-resultid="1" data-rate={{hh.rf}}  data-bettingid="1" data-gameid={{hh.gameid}}>
+                                        <span>客胜</span>
+                                        <span>{{hh.rf|number:2}}</span>
+                                    </span>
+                                    <span class="gamedepict">
+                                        <b>主</b>{{hh.lose|number:1}}
+                                    </span>
+                                    <span class="betbtns" data-resultid="0" data-rate={{hh.rs}} data-bettingid="1" data-gameid={{hh.gameid}}>
+                                        <span>主胜</span>
+                                        <span>{{hh.rs|number:2}}</span>
+                                    </span>
+                                </span>
+                                <span class="rows-l sfpfalse" ng-if="hh.dxfopen == false">
+                                </span>
+                                <span class="rows-l" ng-if="hh.dxfopen == true">
+                                       <span class="betbtns" data-resultid="0" data-rate={{hh.dy}}  data-bettingid="3" data-gameid={{hh.gameid}}>
+                                        <span>大</span>
+                                        <span>{{hh.dy|number:2}}</span>
+                                    </span>
+                                    <span class="gamedepict">
+                                        {{hh.zlose|number:2}}
+                                    </span>
+                                    <span class="betbtns" data-resultid="1" data-rate={{hh.xy}} data-bettingid="3" data-gameid={{hh.gameid}}>
+                                        <span>小</span>
+                                        <span>{{hh.xy|number:2}}</span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="game-more" ng-click="showmixall(hh,outerIndex,$index)">
+                                <span class="ellipsis">更多玩法</span>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </section>
+        </div>
+    </ion-content>
+    <!--胜分差-->
+    <div class="Showcbf" ng-if="Showcbfmod">
+        <section style="height: 5.9rem;">
+            <dl class="match-list">
+                <dd class="match-item match-con">
+                    <div class="match-PvP">
+                        <span>{{showcbf.gname}}</span>
+                        <span class="match-PvP-vs">VS</span>
+                        <span>{{showcbf.hname}}</span>
+                    </div>
+                    <div class="Poor">
+                        <div class="game-left s">客胜</div>
+                        <div class="game-area">
+                                <span class="rows-l">
+                                    <span class="betbtns" data-resultid="0" data-rate={{showcbf.zero}} data-bettingid="2" data-gameid="{{showcbf.gameid}}">
+                                        <span class="fen">1-5</span>
+                                        <span class="rate">{{showcbf.zero}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="1" data-rate={{showcbf.one}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">6-10</span>
+                                        <span class="rate">{{showcbf.one}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="2" data-rate={{showcbf.two}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">11-15</span>
+                                        <span class="rate">{{showcbf.two}}</span>
+                                    </span>
+                                </span>
+                            <span class="rows-l">
+                                 <span class="betbtns" data-resultid="3" data-rate={{showcbf.three}}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">16-20</span>
+                                        <span class="rate">{{showcbf.three}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="4" data-rate={{showcbf.four}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                       <span class="fen">21-25</span>
+                                        <span class="rate">{{showcbf.four}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="5" data-rate={{showcbf.five}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">26+</span>
+                                        <span class="rate">{{showcbf.five}}</span>
+                                    </span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="Poor">
+                        <div class="game-left p" style="line-height: .9rem">主胜</div>
+                        <div class="game-area">
+                                <span class="rows-l">
+                                    <span class="betbtns" data-resultid="6" data-rate={{showcbf.six}} data-bettingid="2" data-gameid="{{showcbf.gameid}}">
+                                        <span class="fen">1-0</span>
+                                        <span class="rate">{{showcbf.six}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="7" data-rate={{showcbf.seven}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">6-10</span>
+                                        <span class="rate">{{showcbf.seven}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="8" data-rate={{showcbf.tvo}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">11-15</span>
+                                        <span class="rate">{{showcbf.eight}}</span>
+                                    </span>
+                                </span>
+                            <span class="rows-l">
+                                 <span class="betbtns" data-resultid="9" data-rate={{showcbf.nine}}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">16-20</span>
+                                        <span class="rate">{{showcbf.nine}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="10" data-rate={{showcbf.ten}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                       <span class="fen">21-25</span>
+                                        <span class="rate">{{showcbf.ten}}</span>
+                                    </span>
+                                    <span class="betbtns" data-resultid="11" data-rate={{showcbf.eleven}} data-bettingid="2" data-gameid={{showcbf.gameid}}>
+                                        <span class="fen">26+</span>
+                                        <span class="rate">{{showcbf.eleven}}</span>
+                                    </span>
+                                </span>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <div class="confirmBox">
+                <span class="cancel" ng-click="cbfcancel()">取消</span>
+                <span class="confirm" ng-click="cbfconfirm()">确定</span>
+            </div>
+        </section>
+    </div>
+    <!--混合-->
+    <div class="Showcbf" ng-if="Showhhmod">
+        <section>
+            <dl class="match-list">
+                <dd class="match-item match-con">
+                    <div class="match-PvP">
+                        <span>{{showhh.gname}}</span>
+                        <span class="match-PvP-vs">VS</span>
+                        <span>{{showhh.hname}}</span>
+                    </div>
+                    <ion-scroll style="height: 7rem;">
+                        <div class="hhsf hhmarbot" ng-if="showhh.sfopen ==true">
+                        <span class="rows-l">
+                                    <span class="game-type list1">胜负</span>
+                                    <span class="betbtns" data-resultid="1" data-rate={{showhh.f}} data-bettingid="0" data-gameid="{{showhh.gameid}}">
+                                        <span>客胜</span>
+                                        <span>{{showhh.f|number:2}}</span>
+                                    </span>
+                                    <span class="betcon">
+                                        胜负
+                                    </span>
+                                    <span class="betbtns" data-resultid="0" data-rate={{showhh.s}} data-bettingid="0" data-gameid="{{showhh.gameid}}">
+                                        <span>主胜</span>
+                                        <span>{{showhh.s|number:2}}</span>
+                                    </span>
+                                </span>
+                        </div>
+
+                        <div class="hhsf hhmarbot" ng-if="showhh.rfsfopen ==true">
+                        <span class="rows-l">
+                                    <span class="game-type list2">让分</span>
+                                    <span class="betbtns" data-resultid="1" data-rate={{showhh.rf}} data-bettingid="1" data-gameid="{{showhh.gameid}}">
+                                        <span>客胜</span>
+                                        <span>{{showhh.rf|number:2}}</span>
+                                    </span>
+                                    <span class="betcon">
+                                        胜负
+                                    </span>
+                                    <span class="betbtns" data-resultid="0" data-rate={{showhh.rs}} data-bettingid="1" data-gameid="{{showhh.gameid}}">
+                                        <span>主{{showhh.lose}}</span>
+                                        <span>{{showhh.rs|number:2}}</span>
+                                    </span>
+                                </span>
+                        </div>
+
+                        <div class="hhsf hhmarbot" ng-if="showhh.dxfopen ==true">
+                        <span class="rows-l">
+                                    <span class="game-type list3">大小</span>
+                                    <span class="betbtns" data-resultid="0" data-rate={{showhh.dy}} data-bettingid="3" data-gameid="{{showhh.gameid}}">
+                                        <span>大</span>
+                                        <span>{{showhh.dy|number:2}}</span>
+                                    </span>
+                                    <span class="betcon">
+                                       {{showhh.zlose}}
+                                    </span>
+                                    <span class="betbtns" data-resultid="1" data-rate={{showhh.xy}} data-bettingid="3" data-gameid="{{showhh.gameid}}">
+                                        <span>小</span>
+                                        <span>{{showhh.xy|number:2}}</span>
+                                    </span>
+                                </span>
+                        </div>
+
+                        <div class="hhsf hhmarbot" ng-if="showhh.sfcopen ==true">
+                            <div class="hhPoorleft list4">比分</div>
+                            <div class="hhPoorright">
+                                <div class="hhPoor">
+                                    <div class="game-left s">{{showhh.gname}}(客)胜</div>
+                                    <div class="game-area">
+                                    <span class="rows-l">
+                                        <span class="betbtns" data-resultid="0" data-rate={{showhh.zero}} data-bettingid="2" data-gameid="{{showhh.gameid}}">
+                                            <span class="fen">1-5</span>
+                                            <span class="rate">{{showhh.zero}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="1" data-rate={{showhh.one}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">6-10</span>
+                                            <span class="rate">{{showhh.one}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="2" data-rate={{showhh.two}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">11-15</span>
+                                            <span class="rate">{{showhh.two}}</span>
+                                        </span>
+                                    </span>
+                                        <span class="rows-l">
+                                     <span class="betbtns" data-resultid="3" data-rate={{showhh.three}}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">16-20</span>
+                                            <span class="rate">{{showhh.three}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="4" data-rate={{showhh.four}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                           <span class="fen">21-25</span>
+                                            <span class="rate">{{showhh.four}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="5" data-rate={{showhh.five}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">26+</span>
+                                            <span class="rate">{{showhh.five}}</span>
+                                        </span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="hhPoor">
+                                    <div class="game-left p">{{showhh.hname}}(主)胜</div>
+                                    <div class="game-area">
+                                    <span class="rows-l">
+                                        <span class="betbtns" data-resultid="6" data-rate={{showhh.six}} data-bettingid="2" data-gameid="{{showhh.gameid}}">
+                                            <span class="fen">1-0</span>
+                                            <span class="rate">{{showhh.six}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="7" data-rate={{showhh.seven}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">6-10</span>
+                                            <span class="rate">{{showhh.seven}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="8" data-rate={{showhh.tvo}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">11-15</span>
+                                            <span class="rate">{{showhh.eight}}</span>
+                                        </span>
+                                    </span>
+                                        <span class="rows-l">
+                                     <span class="betbtns" data-resultid="9" data-rate={{showhh.nine}}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">16-20</span>
+                                            <span class="rate">{{showhh.nine}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="10" data-rate={{showhh.ten}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                           <span class="fen">21-25</span>
+                                            <span class="rate">{{showhh.ten}}</span>
+                                        </span>
+                                        <span class="betbtns" data-resultid="11" data-rate={{showhh.eleven}} data-bettingid="2" data-gameid={{showhh.gameid}}>
+                                            <span class="fen">26+</span>
+                                            <span class="rate">{{showhh.eleven}}</span>
+                                        </span>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-scroll>
+                </dd>
+            </dl>
+            <div class="confirmBox">
+                <span class="cancel" ng-click="hhcancel()">取消</span>
+                <span class="confirm" ng-click="hhconfirm()">确定</span>
+            </div>
+        </section>
+    </div>
+    <!--玩法筛选-->
+    <div class="Soccerhall-playlist" ng-class="{true: 'Soccerhall-headyes', false: ''}[ShlistHeght]" >
+        <ul>
+            <li data="1">胜负(过关)</li>
+            <li data="2">让分胜负(过关)</li>
+            <li data="3">胜分差(过关)</li>
+            <li data="4">大小分(过关)</li>
+            <li data="5">混合过关(过关)</li>
+            <li style="border-width: 0"></li>
+            <li data="7">胜负(单关)</li>
+            <li data="8">让分胜负(单关)</li>
+            <li data="9">胜分差(单关)</li>
+            <li data="10">大小分(单关)</li>
+            <li data="11">混合过关(单关)</li>
+            <li style="border-width: 0"></li>
+        </ul>
+    </div>
+    <div class="Soccerhall-playlist" ng-class="{true: 'Soccerhall-headyes', false: ''}[HfiltrateHeght]">
+        <div class="gamefilterbox">
+            <div class="gamefilter">
+                <div class="user-tab-bar" style="padding: 0">
+                    <a ng-class="{n: '', 1: 'user-tab-bar-cle'}[vle]" data-active="1" >全选</a>
+                    <a ng-class="{n: '', 2: 'user-tab-bar-cle'}[vle]" data-active="2" >反选</a>
+                </div>
+                <div class="gamename">
+                    <li class="ott-img" ng-repeat="gn in matchnamelist">{{gn}}</li>
+                </div>
+            </div>
+          <!--  <div class="num">
+                已选择100场比赛
+            </div>-->
+            <div class="gamefoot" style="border-top: 1px solid #ccc">
+                <span>取消</span>
+                <span class="qd">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="assistant" ng-if="assistantShow" ng-click="assistant(0)">
+        <ul>
+            <li ng-click="assistant(1)">购奖记录</li>
+            <li ng-click="assistant(2)">玩法介绍</li>
+            <li ng-click="assistant(3)">开奖信息</li>
+        </ul>
+    </div>
+    <ion-footer-bar class="soccerhall-foots">
+        <div class="soccerhall-foots-clear" ng-click="hallcancel()">清除</div>
+        <div class="soccerhall-foots-con">{{gamesession}}</div>
+        <div class="soccerhall-foots-Confirm" ng-click="Confirm()">确认</div>
+    </ion-footer-bar>
+</ion-view>
