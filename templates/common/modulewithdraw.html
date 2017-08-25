@@ -1,0 +1,21 @@
+<div class="modulebankBOX" ng-click="getbank(0,$event)">
+    <div class="withdrawform modulebank">
+            <div class="selectbank" ng-repeat="l in carlist" ng-click="getbank(l,$event)">
+                <div class="l_selectbank"><img src='../img/bank.svg' ng-src="{{l.bank|bankimg}}"></div>
+                <div class="r_selectbank">
+                    <div class="banktype">{{l.bank}}<font>储蓄卡</font></div>
+                    <div class="banknum">{{l.cardno|getSubStr:4:4:1}}</div>
+                </div>
+                <i class="icon iconfont icon-jiantou"></i>
+            </div>
+
+
+        <div class="selectbank" ng-click="getbank(1,$event)">
+            <div class="l_selectbank"><img src="img/plus.png"></div>
+            <div class="r_selectbank nulltype">
+                添加提款银行
+            </div>
+            <i class="icon iconfont icon-jiantou"></i>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<ion-view hide-nav-bar="true">
+	<ion-header-bar class="bar-background Soccerhall-har">
+		<a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+		<span style="margin-left: 1.3rem;position: relative;">银行卡</span>
+		<div class="Soccerhall-har-right">
+			<font class="font" ng-click="bianji()">{{buttontext}}</font>
+			<a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+		</div>
+	</ion-header-bar>
+    <ion-content class="contentBG">
+         	<div class="user-IDcard">
+                <!--<li class="cardlist" ng-repeat="c in carlist">
+                    <span>{{c.bank}}</span>
+                    <span>卡号:{{c.cardno|getSubStr:3:4}}</span>
+                </li>-->
+		<li ng-repeat="c in carlist">
+			<div class="liimg">
+				<img src='../img/bank.svg' ng-src="{{c.bank|bankimg}}"> </img>
+			</div>
+			<div class='uci'>
+				<span class='uci-name'>{{c.bank}}</span>
+				<span class='uci-value'><font>{{c.name|bankname}}</font>储蓄卡</span>
+				<span class='uci-nums'>{{c.cardno|getSubStr:4:4:1}}</span>
+			</div>
+			<div class="del" ng-if="!redact" ng-click="delbank(c)">
+				<img src="img/sanchu.svg">
+			</div>
+		</li>
+		<!--<li class='uc-hzbank'>
+			<img class="uci-img" src='../img/hzbank@2x.png'> </img>
+			<div class='uci'>
+				<span class='uci-name'>杭州银行</span>
+				<span class='uci-value'>储蓄卡</span>
+				<span class='uci-nums'>**** **** **** 111</span>
+			</div>
+		</li>-->
+ 		<div class='uc-add bankcolor bd' ng-click="goBankCardList()">
+ 		<img src='img/plus.png' class='uca-img'>
+ 			<span>添加提款银行卡</span>
+ 		</div>
+				<div style="text-align: center;color: #666">最多绑定五张银行卡</div>
+	</div>
+    </ion-content>
+</ion-view>

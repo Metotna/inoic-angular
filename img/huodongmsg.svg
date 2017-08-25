@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="78px" height="78px" viewBox="0 0 78 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>chongzhi copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chongzhi-copy">
+            <circle id="Oval-4" fill="#FF9800" cx="39" cy="39" r="39"></circle>
+            <g id="券" transform="translate(16.000000, 22.000000)" stroke="#FFFFFF">
+                <path d="M40.348401,33.75 C42.7735275,33.75 44.75,31.7678875 44.75,29.3323035 L44.75,22.8196041 C44.75,22.5410998 44.5262177,22.316672 44.2521244,22.316672 C41.5838146,22.316672 39.4165021,20.1431694 39.4165021,17.4708238 C39.4165021,14.7985504 41.5838386,12.6250237 44.2521244,12.6250237 C44.5262177,12.6250237 44.75,12.4005959 44.75,12.1220917 L44.75,5.66774467 C44.75,3.23211831 42.7735333,1.25 40.348401,1.25 L5.65159901,1.25 C3.22644845,1.25 1.25,3.23208842 1.25,5.66774467 L1.25,29.3322553 C1.25,31.7678817 3.22646666,33.75 5.65159901,33.75 L40.348401,33.75 Z" id="Shape" stroke-width="2.5" fill-rule="nonzero"></path>
+                <path d="M13,5 L13,7" id="Line" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M13,13 L13,15" id="Line-Copy" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M13,20 L13,22" id="Line-Copy-2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M13,28 L13,30" id="Line-Copy-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

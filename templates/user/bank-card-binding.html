@@ -1,0 +1,39 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">添加银行卡</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG">
+        <div class="login-tab-con register-top">
+            <form name="userLogin" ng-submit="doBindingBankCard()" novalidate="novalidate">
+                    <div class="xsbank" ng-click="xssetbank()"><div>{{bankCardObj.bank}}</div><div class="settingr"><i class="icon iconfont icon-jiantou"></i></div></div>
+                <p>
+                    <input name="name" type="text" ng-model="bankCardObj.name" ng-focus="cellPhoneErrorOff()" ng-blur="setAccountName()" placeholder="请输入真实姓名" />
+                    <span class="error" ng-show="setAccountNameError">{{setAccountNameErrorMsg}}</span>
+                </p>
+                <p class="login-tab-pwd" id="logintabpwd">
+                    <input name="cardno" type="tel"  ng-model="bankCardObj.cardno" ng-focus="setPWDErrorOff()" ng-blur="setCardNum()" placeholder="请输入银行卡号" />
+                    <span class="error" ng-show="setCardNumError">{{setCardNumErrorMsg}}</span>
+                </p>
+                <p style="text-align: left;color: #666">最多绑定五张银行卡</p>
+                <p>
+                    <button class="submit-btn" type="submit">确认添加</button>
+                </p>
+            </form>
+        </div>
+    </ion-content>
+    <div class="banklistBOX" ng-show="showsetbank" ng-click="setbank(0,$event)">
+        <div class="banklist">
+            <ul>
+                <li ng-repeat="l in banklist" ng-click="setbank(l,$event)" ng-class="{true: 'ott-img', false: ''}[bankCardObj.bank == l.bank]">
+                    <span>
+                        {{l.bank}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ion-view>

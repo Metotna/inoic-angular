@@ -1,0 +1,21 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">{{mt|msglistmt}}</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG">
+        <ion-refresher pulling-text="下拉刷新" refreshing-text="数据正在加载中..." on-refresh="bomdoPost()"></ion-refresher>
+      <div class="classifyitem" ng-click="godetaail(l.order,l.id)" ng-repeat="l in list" ng-class="{false: 'w', true: 'y'}[!l.readed]">
+          <div class="msg_l"><a></a></div>
+          <div class="msg_r">
+              <h3 class="mt">{{l.mt|msglistmt}}</h3>
+              <p class="content">{{l.content}}</p>
+          </div>
+          <span class="ctime">{{l.ctime}}</span>
+      </div>
+        <ion-infinite-scroll on-infinite="loadParticulars()" distance="1%" ng-if="goods_load_over" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

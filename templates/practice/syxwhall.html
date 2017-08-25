@@ -1,0 +1,113 @@
+<ion-view view-title="十一选五" hide-nav-bar="true"><ion-header-bar class="bar-background Soccerhall-har">
+    <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+    <span ng-click="Shlist()" style="margin-left: 1.3rem;position: relative;">{{plstext}}<i class="iconsub"></i></span>
+    <div class="Soccerhall-har-right">
+        <a class="icon iconfont icon-jiagezoushi funnel" ng-click="goqxc(SYXWtype)"></a>
+        <a class="funnel dian" ng-click="assistant(0)"></a>
+    </div>
+</ion-header-bar>
+
+    <div class="sc-heada" ng-click="cotchange()">距<span>{{list.pid}}</span>期截止，{{downtime|downtime}}</div>
+    <div class="sch-f-a" ng-click="cotchange()">
+        <div><img src='img/jiantou.svg' class="sch-f-j"> </div>
+    </div>
+    <div class="sch-cot" ng-click="goqxc(SYXWtype)">
+        <div class="scha-h schc-list-bgc ">
+            <span class="schc-a" style="width: 35%">期次</span><span class="schc-b" style="width: 65%">开奖号码</span>
+        </div>
+        <li style="overflow: hidden;" class='schc-list' ng-repeat="x in list.rowsp" ng-class-even="'schc-list-bgc'" ng-class="$index == 0 ? 'schc-list-c':'';">
+            <div style="width: 35%">{{x.pid}}期<i></i></div>
+            <div style="overflow: hidden;width: 65%" class="schc-list-w"><span ng-repeat="y in x.acode.split(',') track by $index">{{y}}</span> </div>
+        </li>
+    </div>
+    <ion-content has-bouncing="false" class="seven-cot"  delegate-handle="plscon">
+        <div class="s-cot-head">
+        </div>
+        <div class="sc-headb">
+            <span ng-if="!dtma">{{ts2}}</span>
+            <span>{{ts1}}<i>{{ts3}}</i></span>
+            <span ng-if="dtma"><i>我认为必出的号码</i>&nbsp;&nbsp;<q ng-if="rx==2">请选择{{rx-1}}个</q><q ng-if="rx!=2">至少选择1个，最多选择{{rx-1}}个</q></span>
+            <div ng-click="Random()" ng-if="!dtma"><img src="img/yaoyiyao.svg">机选一注</div>
+        </div>
+        <div class="sc-cot" id="syxw">
+            <div class="scc-li" ng-repeat="x in ary track by $index">
+                <div ng-if="$index == 1 && dtma" class="syxwtq"><i>我认为可能出的号码</i>&nbsp;&nbsp;请选择2个最多选10个</div>
+                <div class="sccl-l">
+                    <span>{{$index|syxwplace:playid}}</span><i></i>
+                    <span ng-click="miss()" ng-if="missflag">遗漏</span><i></i>
+                </div>
+                <div class="sccl-r">
+                    <li style="color:#000;width: 16%;" ng-repeat="m in aryb">
+                        <div data-num='{"id":"{{m}}"}' class="b_class temp_li"
+                             on-touch="numclick($parent.$index,m,$event)"
+                             on-release="fangdahidea($parent.$index,m,$event)"
+                             on-drag="fangdahideb($parent.$index,m,$event)">{{m}}
+                            <div class="scclr-big">
+                                <span>{{m}}</span>
+                            </div>
+                        </div>
+                        <span ng-if="missflag">22</span>
+                    </li>
+                    <!--<li style="color:#000;" ng-repeat="m in aryb">
+                        <div class="b_class temp_li"
+                             on-touch="numclick($parent.$index,m)"
+                             on-release="fangdahidea($parent.$index,m)"
+                             on-drag="fangdahideb($parent.$index,m)">{{m}}
+                        <span class="scclr-big">{{m}}</span>
+                        </div>
+                        <span ng-if="missflag">222</span>
+                    </li>-->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <!--玩法筛选-->
+    <div class="Soccerhall-playlist" ng-class="{true: 'Soccerhall-headyes', false: ''}[ShlistHeght]">
+        <ul style="padding-top: 0">
+            <div class="syxwldl">普通投注</div>
+            <li data-syxw="rx1_pt" data-payluid="1" data-rx="1">任选一</li>
+            <li data-syxw="rx2_pt" data-payluid="2" data-rx="2">任选二</li>
+            <li data-syxw="rx3_pt" data-payluid="3" data-rx="3">任选三</li>
+            <li data-syxw="rx4_pt" data-payluid="4" data-rx="4">任选四</li>
+            <li data-syxw="rx5_pt" data-payluid="5" data-rx="5">任选五</li>
+            <li data-syxw="rx6_pt" data-payluid="6" data-rx="6">任选六</li>
+            <li data-syxw="rx7_pt" data-payluid="7" data-rx="7">任选七</li>
+            <li data-syxw="rx8_pt" data-payluid="8" data-rx="8">任选八</li>
+            <li data-syxw="q2_pt" data-payluid="9" data-rx="2">前二直选</li>
+            <li data-syxw="q2zx_pt" data-payluid="11" data-rx="2">前二组选</li>
+            <li data-syxw="q3_pt" data-payluid="10" data-rx="3">前三直选</li>
+            <li data-syxw="q3zx_pt" data-payluid="12" data-rx="3">前三组选</li>
+            <div class="syxwldl">胆拖投注</div>
+            <li data-syxw="rx2_dt" data-payluid="2" data-rx="2">任选二</li>
+            <li data-syxw="rx3_dt" data-payluid="3" data-rx="3">任选三</li>
+            <li data-syxw="rx4_dt" data-payluid="4" data-rx="4">任选四</li>
+            <li data-syxw="rx5_dt" data-payluid="5" data-rx="5">任选五</li>
+            <li data-syxw="rx6_dt" data-payluid="6" data-rx="6">任选六</li>
+            <li data-syxw="rx7_dt" data-payluid="7" data-rx="7">任选七</li>
+            <li data-syxw="q2zx_dt" data-payluid="11" data-rx="2">前二组选</li>
+            <li data-syxw="q3zx_dt" data-payluid="12" data-rx="3">前三组选</li>
+        </ul>
+    </div>
+    <!--助手-->
+    <div class="assistant" ng-if="assistantShow" ng-click="assistant(0)">
+        <ul>
+            <li ng-click="assistant(1)">购奖记录</li>
+            <li ng-click="assistant(2)">玩法介绍</li>
+            <li ng-click="assistant(3)">开奖信息</li>
+        </ul>
+    </div>
+    <ion-footer-bar class="soccerhall-foots">
+        <div class="sf-l-t" id="plsjxd" ng-if="plsjxd">
+            <div ng-click="rdnums(1)">1注</div>
+            <div ng-click="rdnums(5)">5注</div>
+            <div ng-click="rdnums(10)" class="sf-l-ta">10注</div>
+            <span></span>
+        </div>
+        <div class="sf-left" ng-click="deleteary()" ng-if="gamesession || dtma">清除</div>
+        <div class="sf-left" ng-click="jixuan()" ng-if="!gamesession && !dtma">机选</div>
+        <div class="sf-cot">
+            <span>共{{gamesession}}注<span>{{2*gamesession}}元</span></span>
+        </div>
+        <div class="sf-right" ng-click="Confirm()">确定</div>
+    </ion-footer-bar>
+</ion-view>

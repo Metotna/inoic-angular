@@ -1,0 +1,157 @@
+<ion-view view-title="投注详情" hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">投注详情</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="detailBGM">
+        <section>
+            <div class="detail-top">
+                <div class="detail-hear-tit">
+                    <div class="detail-hear-titleft">
+                        <div class="detail-hear-img">
+                            <img src="img/{{list.lotteryid}}.png">
+                        </div>
+                        <div class="detail-hear-text">
+                            <span>{{list.bdesc}}</span>
+                            <span>投注时间：{{list.bdate}}</span>
+                        </div>
+                    </div>
+                    <div class="detail-hear-titright" ng-if="list.lotteryid != '1' && list.lotteryid != '2'">{{list.pid}}期</div>
+                </div>
+                <div class="detail-Status-box">
+                    <div class="detail-Status">
+                        <div class="detail-Status-con">
+                            <div class="box">
+                                <span>投注金额</span>
+                                <span>{{list.money}}元</span>
+                            </div>
+                        </div>
+                        <div class="detail-Status-con">
+                            <div class="box">
+                                <!-- <span>{{list.statusdesc}}</span> -->
+                                <span>中奖金额</span>
+                                <span style="color: #F05244;">{{list.amoney!='0' ? list.amoney+'元':'- - ' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sawtooth"></div>
+            </div>
+        </section>
+        <!--竞彩-->
+        <div ng-if="list.lotteryid =='1' || list.lotteryid =='2'">
+            <section>
+                <div class="detail-gamebox left-red-border"><span class="play">订单详情</span></div>
+                <div class="detail-gamebox child-bgc"><span class="play">订单信息:</span>
+                    <div class="child-right" ng-class="{true:'child-true',false:''}[list.status==0]">{{list.statusdesc}}</div>
+                </div>
+                <div class="detail-gameboxzq">
+                    <span class="play">玩法信息：</span>
+                    <div class="detail-gamezq">
+                        <span ng-repeat="arr in arrylist">{{arr|gates}}</span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="detail-gamebox left-red-border">
+                    <span class="play">投注信息</span>
+                    <div class="detail-game">
+                        <span>{{list.bdouble}}倍</span><span>{{list.bcount}}注</span>
+                    </div>
+                </div>
+            </section>
+            <section class="detail-item-box">
+                <div class="Order-details">
+                    <table class="Order-d-table">
+                        <tr class="Od-title ">
+                            <td class="Od-lists od-border">场次</td>
+                            <td class="Od-names od-border">对阵</td>
+                            <td class="Od-score od-border">比分</td>
+                            <td class="Od-plays od-border">玩法</td>
+                            <td class="Od-bat od-border">您的投注</td>
+                        </tr>
+                        <tr class="Od-cot" ng-repeat="l in list.bbets">
+                            <td class="Od-lists-cot od-border">
+                                <span>{{l.pname}}</span>
+                            </td>
+                            <td class="Od-names-cot od-border">
+                                <span>{{l.hn}}</span><span>VS</span><span>{{l.gn}}</span>
+                            </td>
+                            <td class="Od-score-cot od-border">
+                                <span>{{l.hs?l.hs+':'+l.gs:':'}}</span>
+                            </td>
+                            <td class="Od-plays-cot od-border " colspan=2>
+                                <div class="detaiOzdbox" ng-class="{true: 'bkimg', false: ''}[zjborde(l)]">
+                                    <div class="detai-Ozd ">
+                                        <li ng-repeat="s in l.playid" ng-class="{true: 'font-color', false: ''}[Winning(l,s)]"><span>{{s.bettype}}</span><span>{{s.betresult}}({{s.winrate}})</span></li>
+                                    </div>
+                                </div>
+                                <!--<div class="Odbc-m">-->
+                                <!--<div class="Odbcm-s"></div>-->
+                                <!--</div>-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div class="detail-gamebox left-red-border" style="margin-top: .1rem;" ng-click="playabout()">
+                    <span class="play" style="width: 35%">奖金计算方式</span>
+                    <a class="icon iconfont icon-jiantou"></a>
+                </div>
+            </section>
+        </div>
+        <!--数字彩票-->
+        <div ng-if="list.lotteryid !='1' && list.lotteryid !='2'">
+            <section>
+                <div class="detail-gamebox left-red-border"><span class="play">订单信息</span></div>
+                <div class="detail-gamebox child-bgc"><span class="play">订单状态:</span>
+                    <div class="child-right" ng-class="{true:'child-true',false:''}[list.status==0]">{{list.statusdesc}}</div>
+                </div>
+                <div class="detail-gamebox child-bgc"><span class="play">开奖号码:</span>
+                    <div class="kjszc" ng-class="{true: 'kjszcdlt', false: ''}[list.lotteryid == '6'|| list.lotteryid == '11']">
+                        <span ng-if="list.lotteryid != '6' && list.lotteryid != '11'">{{list.acode|acode}}</span>
+                        <span ng-if="list.lotteryid == '6' || list.lotteryid == '11'" ng-repeat="ac in acode">{{ac}}</span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="detail-gamebox left-red-border" ng-click="temp()">
+                    <span class="play">选号详情</span>
+                    <div class="detail-game">
+                        <span>{{list.bcount}}注</span><span>{{list.bdouble}}倍</span>
+                    </div>
+                    <a class="icon iconfont icon-jiantou" ng-class="{true:'atransform' }[tempfalg]"></a>
+                </div>
+            </section>
+            <section class="detail-item-box" ng-if="tempfalg">
+                <div class="detail-item-h"> </div>
+                <div class=" szc">
+                    <span class="tzlist" ng-repeat="np in arrylist track by $index">
+                        <span class="tit">{{np.play}}</span>
+                    <span class="con"><font>{{np.bets|tzxq:0}}</font><font class="font-blue">{{np.bets|tzxq:1}}</font></span>
+                    </span>
+                </div>
+            </section>
+            <section>
+                <div class="detail-gamebox left-red-border" style="margin-top: .1rem;" ng-click="playabout()">
+                    <span class="play" style="width: 35%">奖金计算方式</span>
+                    <a class="icon iconfont icon-jiantou"></a>
+                </div>
+            </section>
+        </div>
+        <section>
+            <div class="detail-OrderID" style="margin-top:.1rem">
+                订单号：{{list.bid}}
+            </div>
+        </section>
+    </ion-content>
+    <ion-footer-bar class="detaillist-foot">
+        <div class="detaillist-foot-butt" ng-click="Goagainpay()">
+            继续投注
+        </div>
+    </ion-footer-bar>
+</ion-view>

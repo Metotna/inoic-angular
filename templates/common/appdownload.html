@@ -1,0 +1,10 @@
+<ion-view view-title="下载页面" hide-nav-bar="true">
+    <ion-content has-bouncing="false" id="apkdownloda">
+        <div class="downloadbox">
+            <img ng-src={{bgimg}}>
+            <a id="downloadAPK" class="downloadAPK" ng-href={{durl}} ng-if="isweixin == 'no'"></a>
+            <a class="downloadAPK" ng-click="download()" ng-if="isweixin == 'yes'"></a>
+            <div class="gohome" ng-click="Gohome()"></div>
+        </div>
+    </ion-content>
+</ion-view>

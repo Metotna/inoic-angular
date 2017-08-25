@@ -1,0 +1,95 @@
+<ion-view view-title="个人中心" hide-nav-bar="true">
+<!--    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">个人中心</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shaixuan funnel" ng-click="Hfiltrate()"></a>
+            <a class="icon iconfont icon-chilun" ng-click="goSetting()"></a>
+        </div>
+    </ion-header-bar>-->
+    <ion-header-bar class="bar-background Soccerhall-har" >
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span ng-click="Shlist()" style="margin-left: 1.3rem;position: relative;">个人中心</span>
+        <div class="Soccerhall-har-right">
+            <a class="funnel dian" style="background: url(img/new.svg);background-size: 100% 100%;" ng-click="gomsglist()"></a>
+            <a class="funnel dian" style="background: url(img/set.svg);background-size: 100% 100%;" ng-click="goSetting()"></a>
+        </div>
+    </ion-header-bar>
+    <div class="user-newban">
+        <div class='user-newban-top'>
+            <div class="unt-l">
+                <div class="unt-img">
+                    <div class="unt-pl">lv1</div>
+                </div>
+                <h3 ng-if="!loginTYPE" style="font-size: .32rem">您还未登录</h3>
+                <h3 ng-if="loginTYPE">{{userinfo.phone|getSubStr:3:4}}</h3>
+            </div>
+            <div class="unt-r" ng-if="loginTYPE">
+                <h2>余额(元)</h2>
+                <h3>{{userinfo.money|number:2}}</h3>
+            </div>
+        </div>
+        <div class="user-newban-bottom">
+            <div ng-if="loginTYPE">
+                <button class='unt-btn unt-btn-a' ng-click="goWalletPay()">充值</button>
+                <button class='unt-btn unt-btn-b' ng-click="goWithdraw()">提现</button>
+            </div>
+            <div ng-if="!loginTYPE">
+                <button class='unt-btn unt-btn-a' ng-click="goLogin()">登录</button>
+                <button class='unt-btn unt-btn-b' ng-click="goRegister()">注册</button>
+            </div>
+        </div>
+    </div>
+    <div class="user-inform" ng-if="guid" ng-click="guide()">
+        <span class="user-inform-left"><i class="dl"></i>下载我猜客户端</span><span class="user-inform-right"><i class="icon iconfont icon-jiantou"></i></span>
+    </div>
+    <div class="user-tab-bar">
+        <a ng-class="{n: '', 4: 'user-tab-bar-cle'}[vle]" data-active="4" ng-click="changeTab($event)">购彩记录</a>
+        <a ng-class="{n: '', 2: 'user-tab-bar-cle'}[vle]" data-active="2" ng-click="changeTab($event)">中奖记录</a>
+        <a ng-class="{n: '', 1: 'user-tab-bar-cle'}[vle]" data-active="1" ng-click="changeTab($event)">资金明细</a>
+        <img src="img/Group5.png" ng-class="{4: 'utb-a',2: 'utb-b',1: 'utb-c'}[vle]">
+    </div>
+    <ion-content ng-style="mytop" has-bouncing="false" delegate-handle="orderlist">
+        <ion-refresher pulling-text="下拉刷新" refreshing-text="数据正在加载中..." on-refresh="bomdoPost()"></ion-refresher>
+        <div class="detaillist list-item" ng-click="godetaail(d.bid)" ng-repeat="d in list">
+            <div class="detaillist-list-left">
+                <div class="detaillist-list-time" ng-if="vle!=1">
+                    <span>{{d.bdate|itemlisttime:1}}</span>
+                    <span>{{d.bdate|itemlisttime:2}}</span>
+                </div>
+                <div class="detaillist-list-time" ng-if="vle==1">
+                    <span>{{d.time|itemlisttime:1}}</span>
+                    <span>{{d.time|itemlisttime:2}}</span>
+                </div>
+                <div class="detaillist-list-tit">
+                    <div ng-if="vle==4">
+                        <span class="tt">{{d.bdesc}}</span>
+                        <span class="bb">{{d.bcast|ordebcast}}{{d.money|number:2}}元</span>
+                    </div>
+                    <div ng-if="vle==2">
+                        <span class="tt">{{d.bdesc}}</span>
+                        <span class="bb">{{d.bcast|ordebcast}}{{d.money|number:2}}元</span>
+                    </div>
+                    <div ng-if="vle==1">
+                        <span class="tt" style="  height: .88rem;line-height: .88rem;">{{d.desc}}</span>
+                    </div>
+                </div>
+            </div>
+            <span class="detaillist-list-right font-color" ng-if="vle!=1 &&d.status ==1"><div style="float: left;text-align: right;color: #f05244;"><span>{{d.statusdesc}}</span><span class="zj">{{d.amoney}}元</span></div><i class="icon iconfont icon-jiantou"></i></span>
+        <span class="detaillist-list-right font-color" ng-if="vle!=1 &&d.status !=1">{{d.statusdesc}}<i class="icon iconfont icon-jiantou"></i></span>
+        <span class="detaillist-list-right" ng-if="vle==1" ng-class="{true: 'red', false: 'green'}[detailpd(d)]">{{detailpd(d)?'+':'-'}} {{d.money|number:2}}元</span>
+        </div>
+        <div class="auto-img kzt" ng-if="bgimg">
+            <img src="img/kongzhuangtai.png">
+            <span>暂无记录</span>
+        </div>
+        <ion-infinite-scroll on-infinite="loadParticulars()" distance="1%" ng-if="goods_load_over" icon="" immediate-check="false"></ion-infinite-scroll>
+        <!--<button ng-click="gopaysuccess()">支付成功</button>-->
+        <!--<button ng-click="goLogin()">登录</button>-->
+        <!--<button ng-click="goRegister()">注册</button>-->
+        <!--<button ng-click="goLostPWD()">找回密码</button>-->
+        <!--<button ng-click="goChangePWD()">修改密码</button>-->
+        <!--<button ng-click="goOutLogin()">退出登录</button>-->
+        <!--<button ng-click="gozq()">跳转到足球首页</button>-->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,43 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-background Soccerhall-har">
+        <a class="bar-backgo icon iconfont icon-jiantou1" ng-click="backGo()"><i></i></a>
+        <span style="margin-left: 1.3rem;position: relative;">消息</span>
+        <div class="Soccerhall-har-right">
+            <a class="icon iconfont icon-shouyeshouye funnel home" ng-click="Gohome()"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="contentBG" scroll=false>
+        <div class="detaillist list-item" ng-click="goclassifylist('ZJ')">
+            <div class="detaillist-list-left msglistl">
+                <img src="img/zhongjiangmsg.svg">
+                <span class="tit">中奖消息</span>
+
+            </div>
+            <span class="detaillist-list-right font-color" ><a class="msgnum">{{ary.ZJ.unr}}</a><i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+        <div class="detaillist list-item" ng-click="goclassifylist('TP')">
+            <div class="detaillist-list-left msglistl">
+                <img src="img/tuipiao.svg">
+                <span class="tit">退票消息</span>
+
+            </div>
+            <span class="detaillist-list-right font-color" ><a class="msgnum">{{ary.TP.unr}}</a><i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+       <!-- <div class="detaillist list-item">
+            <div class="detaillist-list-left msglistl">
+                <img src="img/chongzhi.svg">
+                <span class="tit">充值提现</span>
+
+            </div>
+            <span class="detaillist-list-right font-color" ><a class="msgnum">2</a><i class="icon iconfont icon-jiantou"></i></span>
+        </div>
+        <div class="detaillist list-item">
+            <div class="detaillist-list-left msglistl">
+                <img src="img/huodongmsg.svg">
+                <span class="tit">活动彩券</span>
+
+            </div>
+            <span class="detaillist-list-right font-color" ><a class="msgnum">2</a><i class="icon iconfont icon-jiantou"></i></span>
+        </div>-->
+    </ion-content>
+</ion-view>
